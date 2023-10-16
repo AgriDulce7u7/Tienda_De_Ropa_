@@ -4,7 +4,7 @@ import co.edu.uniquindio.tiendaDeRopa.Model.Enumeracion.Sexo;
 
 public class Cliente {
     private String nombreCompleto;
-    private long numeroIdentificacion;
+    private String numeroIdentificacion;
     private Sexo sexo;
     private int prendasCompradas;
     private String fechaUltimaCompra;
@@ -24,11 +24,11 @@ public class Cliente {
         this.nombreCompleto = nombreCompleto;
     }
 
-    public long getNumeroIdentificacion() {
+    public String getNumeroIdentificacion() {
         return numeroIdentificacion;
     }
 
-    public void setNumeroIdentificacion(long numeroIdentificacion) {
+    public void setNumeroIdentificacion(String numeroIdentificacion) {
         this.numeroIdentificacion = numeroIdentificacion;
     }
 
