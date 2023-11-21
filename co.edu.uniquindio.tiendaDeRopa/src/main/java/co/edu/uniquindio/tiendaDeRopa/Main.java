@@ -97,7 +97,7 @@ public class Main {
     }
 
     /**
-     * Método para inializar  los datos del prestamo
+     * Método para inializar  los datos de la tienda
      * */
     private static Tienda inicializarDatosPrueba() {
         Tienda tienda = new Tienda();

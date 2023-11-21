@@ -12,10 +12,9 @@ public class Producto {
     private Color color;
     private double precio;
     private int cantidadDisponible;
-
     Tienda ownedByTienda;
 
-    /* Constructor Vacío */
+    /* Constructor */
     public Producto() {
     }
 

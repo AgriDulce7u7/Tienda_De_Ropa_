@@ -1,8 +1,11 @@
 package co.edu.uniquindio.tiendaDeRopa.Model;
 
+import java.util.Date;
+
 public class Compra {
     private String codigoCompra;
-    private String fechaCompra;
+    private Date fechaCompra;
+    private double totalCompra;
 
     Tienda ownedByTienda;
 
@@ -19,12 +22,20 @@ public class Compra {
         this.codigoCompra = codigoCompra;
     }
 
-    public String getFechaCompra() {
+    public Date getFechaCompra() {
         return fechaCompra;
     }
 
-    public void setFechaCompra(String fechaCompra) {
+    public void setFechaCompra(Date fechaCompra) {
         this.fechaCompra = fechaCompra;
+    }
+
+    public double getTotalCompra() {
+        return totalCompra;
+    }
+
+    public void setTotalCompra(double totalCompra) {
+        this.totalCompra = totalCompra;
     }
 
     public Tienda getOwnedByTienda() {
@@ -38,8 +49,9 @@ public class Compra {
     @Override
     public String toString() {
         return "Compra{" +
-                "Código Compra =" + codigoCompra + '\'' +
-                ", Fecha Compra =" + fechaCompra + '\'' +
+                "Código Compra = " + codigoCompra + '\'' +
+                ", Fecha Compra = " + fechaCompra + '\'' +
+                ", Total de la Compra = " + totalCompra + '\'' +
                 '}';
     }
 }

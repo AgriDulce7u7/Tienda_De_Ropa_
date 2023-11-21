@@ -1,46 +1,20 @@
 package co.edu.uniquindio.tiendaDeRopa.Model;
 
 import co.edu.uniquindio.tiendaDeRopa.Model.Enumeracion.Sexo;
+import co.edu.uniquindio.tiendaDeRopa.Model.Enumeracion.TipoContrato;
 
-public class Empleado {
-    private String nombreCompleto;
-    private long numeroIdentificacion;
-    private Sexo sexo;
+public class Empleado extends Persona {
     private String correo;
-    private long telefono;
+    private double salario;
+    private TipoContrato tipoContrato;
+    private int horasTrabajo;
     Tienda ownedByTienda;
 
     /* Constructor */
-
     public Empleado() {
     }
 
     /* Getters and Setters */
-
-    public String getNombreCompleto() {
-        return nombreCompleto;
-    }
-
-    public void setNombreCompleto(String nombreCompleto) {
-        this.nombreCompleto = nombreCompleto;
-    }
-
-    public long getNumeroIdentificacion() {
-        return numeroIdentificacion;
-    }
-
-    public void setNumeroIdentificacion(long numeroIdentificacion) {
-        this.numeroIdentificacion = numeroIdentificacion;
-    }
-
-    public Sexo getSexo() {
-        return sexo;
-    }
-
-    public void setSexo(Sexo sexo) {
-        this.sexo = sexo;
-    }
-
     public String getCorreo() {
         return correo;
     }
@@ -49,12 +23,28 @@ public class Empleado {
         this.correo = correo;
     }
 
-    public long getTelefono() {
-        return telefono;
+    public double getSalario() {
+        return salario;
     }
 
-    public void setTelefono(long telefono) {
-        this.telefono = telefono;
+    public void setSalario(double salario) {
+        this.salario = salario;
+    }
+
+    public TipoContrato getTipoContrato() {
+        return tipoContrato;
+    }
+
+    public void setTipoContrato(TipoContrato tipoContrato) {
+        this.tipoContrato = tipoContrato;
+    }
+
+    public int getHorasTrabajo() {
+        return horasTrabajo;
+    }
+
+    public void setHorasTrabajo(int horasTrabajo) {
+        this.horasTrabajo = horasTrabajo;
     }
 
     public Tienda getOwnedByTienda() {
@@ -68,11 +58,14 @@ public class Empleado {
     @Override
     public String toString() {
         return "Empleado{" +
-                "Nombre Completo =" + nombreCompleto + '\'' +
-                ", Cédula =" + numeroIdentificacion + '\'' +
-                ", Sexo =" + sexo + '\'' +
-                ", Correo =" + correo + '\'' +
-                ", Telefono =" + telefono +'\''+
+                "Nombre Completo = " + getNombreCompleto() + '\'' +
+                ", Cédula = " + getCedula() + '\'' +
+                ", Sexo = " + getSexo() + '\'' +
+                ", Telefono = " + getTelefono() + '\'' +
+                ", Correo = " + correo +'\''+
+                ", Salario = " + salario +'\''+
+                ", Tipo contrato = " + tipoContrato +'\''+
+                ", Horas de Trabajo = " + horasTrabajo +'\''+
                 '}';
     }
 }

@@ -18,7 +18,6 @@ public class Tienda {
     }
 
     /*Getters and Setters*/
-
     public String getNombre() {
         return nombre;
     }
@@ -69,10 +68,10 @@ public class Tienda {
     /**
      * Método para crear un cliente
      */
-    public boolean crearCliente(String nombreCompleto, String numeroIdentificacion, Sexo sexo, int prendasCompradas, String fechaUltimaCompra){
+    public boolean crearCliente(String nombreCompleto, String cedula, Sexo sexo, int prendasCompradas, String fechaUltimaCompra){
         Cliente cliente = new Cliente();
         cliente.setNombreCompleto(nombreCompleto);
-        cliente.setNumeroIdentificacion(numeroIdentificacion);
+        cliente.setCedula(cedula);
         cliente.setSexo(sexo);
         cliente.setPrendasCompradas(prendasCompradas);
         cliente.setFechaUltimaCompra(fechaUltimaCompra);
@@ -92,9 +91,9 @@ public class Tienda {
     /**
      * Método para actualizar un cliente por medio de la cedula
      * */
-    public void actualizarCliente(String numeroIdentificacion,String nuevoNombreCompleto, Sexo nuevoSexo, int nuevaPrendasCompradas, String nuevoFechaUltimaCompra) {
+    public void actualizarCliente(String cedula,String nuevoNombreCompleto, Sexo nuevoSexo, int nuevaPrendasCompradas, String nuevoFechaUltimaCompra) {
         for (Cliente cliente : listaClientes) {
-            if (cliente.getNumeroIdentificacion().equals(numeroIdentificacion)) {
+            if (cliente.getCedula().equals(cedula)) {
                 cliente.setNombreCompleto(nuevoNombreCompleto);
                 cliente.setSexo(nuevoSexo);
                 cliente.setPrendasCompradas(nuevaPrendasCompradas);
@@ -106,13 +105,13 @@ public class Tienda {
     }
 
     /**
-     * Método para eliminar un cliente por medio de la numeroIdentificacion
+     * Método para eliminar un cliente por medio de la cedula
      * */
-    public void eliminarCliente(String numeroIdentificacion) {
+    public void eliminarCliente(String cedula) {
         int tamanioLista = getListaClientes().size();
         for (int i=0; i < tamanioLista; i++){
             Cliente cliente = getListaClientes().get(i);
-            if(cliente.getNumeroIdentificacion().equalsIgnoreCase(numeroIdentificacion)){
+            if(cliente.getCedula().equalsIgnoreCase(cedula)){
                 getListaClientes().remove(i);
                 break;
             }

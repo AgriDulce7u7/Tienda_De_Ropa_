@@ -1,13 +1,12 @@
 package co.edu.uniquindio.tiendaDeRopa.Model;
 
+import co.edu.uniquindio.tiendaDeRopa.Model.Enumeracion.MetodoPago;
 import co.edu.uniquindio.tiendaDeRopa.Model.Enumeracion.Sexo;
 
-public class Cliente {
-    private String nombreCompleto;
-    private String numeroIdentificacion;
-    private Sexo sexo;
+public class Cliente extends Persona{
     private int prendasCompradas;
     private String fechaUltimaCompra;
+    private MetodoPago metodoPago;
 
     Tienda ownedByTienda;
 
@@ -16,30 +15,6 @@ public class Cliente {
     }
 
     /* Getters and Setters */
-    public String getNombreCompleto() {
-        return nombreCompleto;
-    }
-
-    public void setNombreCompleto(String nombreCompleto) {
-        this.nombreCompleto = nombreCompleto;
-    }
-
-    public String getNumeroIdentificacion() {
-        return numeroIdentificacion;
-    }
-
-    public void setNumeroIdentificacion(String numeroIdentificacion) {
-        this.numeroIdentificacion = numeroIdentificacion;
-    }
-
-    public Sexo getSexo() {
-        return sexo;
-    }
-
-    public void setSexo(Sexo sexo) {
-        this.sexo = sexo;
-    }
-
     public int getPrendasCompradas() {
         return prendasCompradas;
     }
@@ -56,6 +31,14 @@ public class Cliente {
         this.fechaUltimaCompra = fechaUltimaCompra;
     }
 
+    public MetodoPago getMetodoPago() {
+        return metodoPago;
+    }
+
+    public void setMetodoPago(MetodoPago metodoPago) {
+        this.metodoPago = metodoPago;
+    }
+
     public Tienda getOwnedByTienda() {
         return ownedByTienda;
     }
@@ -66,12 +49,13 @@ public class Cliente {
 
     @Override
     public String toString() {
-        return "Cliente{" +
-                "Nombre Completo =" + nombreCompleto + '\'' +
-                ", Cédula =" + numeroIdentificacion + '\'' +
-                ", Sexo =" + sexo + '\'' +
-                ", Prendas Compradas =" + prendasCompradas + '\'' +
-                ", Fecha Ultima Compra =" + fechaUltimaCompra +'\''+
+        return "Cliente {" +
+                "Nombre Completo = " + getNombreCompleto() + '\'' +
+                ", Cédula = " + getCedula() + '\'' +
+                ", Sexo = " + getSexo() + '\'' +
+                ", Prendas Compradas = " + prendasCompradas + '\'' +
+                ", Fecha Ultima Compra = " + fechaUltimaCompra +'\''+
+                ", Método de pago = " + metodoPago + '\''+
                 '}';
     }
 }
