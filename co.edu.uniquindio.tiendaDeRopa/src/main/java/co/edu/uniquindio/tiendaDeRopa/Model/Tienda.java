@@ -1,13 +1,15 @@
 package co.edu.uniquindio.tiendaDeRopa.Model;
 
 import co.edu.uniquindio.tiendaDeRopa.Model.Enumeracion.Sexo;
+import co.edu.uniquindio.tiendaDeRopa.Service.ITienda;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Tienda {
+public class Tienda implements ITienda {
     private  String nombre;
-    List<Persona> listaPersonas = new ArrayList<>();
+    List<Cliente> listaClientes = new ArrayList<>();
+    List<Empleado> listaEmpleado = new ArrayList<>();
     List<Compra> listaCompras = new ArrayList<>();
     List<Producto> listaProductos = new ArrayList<>();
 
@@ -24,12 +26,20 @@ public class Tienda {
         this.nombre = nombre;
     }
 
-    public List<Persona> getListaPersonas() {
-        return listaPersonas;
+    public List<Cliente> getListaClientes() {
+        return listaClientes;
     }
 
-    public void setListaPersonas(List<Persona> listaPersonas) {
-        this.listaPersonas = listaPersonas;
+    public void setListaClientes(List<Cliente> listaClientes) {
+        this.listaClientes = listaClientes;
+    }
+
+    public List<Empleado> getListaEmpleado() {
+        return listaEmpleado;
+    }
+
+    public void setListaEmpleado(List<Empleado> listaEmpleado) {
+        this.listaEmpleado = listaEmpleado;
     }
 
     public List<Compra> getListaCompras() {
@@ -106,5 +116,19 @@ public class Tienda {
                 break;
             }
         }
+    }
+
+    /* Método para mostrar una prenda por la referencia */
+    @Override
+    public Producto mostrarProducto(String referencia) {
+        Producto productoEncontrado = null;
+        for (Producto producto : getListaProductos()) {
+            if (producto.getReferencia().equalsIgnoreCase(referencia)) {
+                productoEncontrado = producto;
+                System.out.println(producto.obtenerInformacion());
+                break;
+            }
+        }
+        return productoEncontrado;
     }
 }

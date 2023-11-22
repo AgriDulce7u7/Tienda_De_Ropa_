@@ -5,7 +5,7 @@ import co.edu.uniquindio.tiendaDeRopa.Model.Enumeracion.Talla;
 import co.edu.uniquindio.tiendaDeRopa.Model.Enumeracion.TipoCliente;
 
 public class Producto {
-    private String tipoProducto;
+    private String nombre;
     private String referencia;
     private TipoCliente tipoCliente;
     private Talla talla;
@@ -18,28 +18,13 @@ public class Producto {
     public Producto() {
     }
 
-    /* Obtener la información de las prendas */
-    public String obtenerInformacion(){
-        String informacion = "";
-        informacion = informacion +
-                "Tipo de Prenda: "+ getTipoProducto()+"\n"+
-                "Referencia: "+getReferencia()+"\n"+
-                "Tipo de Cliente: "+getTipoCliente()+"\n"+
-                "Talla: "+getTalla()+"\n"+
-                "Color: "+getColor()+"\n"+
-                "Precio: "+getPrecio()+"\n"+
-                "Cantidad Disponible: "+getCantidadDisponible()+"\n";
-
-        return informacion;
-    }
-
     /* Getters and Setters */
-    public String getTipoProducto() {
-        return tipoProducto;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setTipoProducto(String tipoProducto) {
-        this.tipoProducto = tipoProducto;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     public String getReferencia() {
@@ -98,10 +83,25 @@ public class Producto {
         this.ownedByTienda = ownedByTienda;
     }
 
+    /* Obtener la información de las prendas */
+    public String obtenerInformacion(){
+        String informacion = "";
+        informacion = informacion +
+                "Nombre: "+ getNombre()+"\n"+
+                "Referencia: "+getReferencia()+"\n"+
+                "Tipo de Cliente: "+getTipoCliente()+"\n"+
+                "Talla: "+getTalla()+"\n"+
+                "Color: "+getColor()+"\n"+
+                "Precio: "+getPrecio()+"\n"+
+                "Cantidad Disponible: "+getCantidadDisponible()+"\n";
+        System.out.println(informacion);
+        return informacion;
+    }
+
     @Override
     public String toString() {
         return "Producto{" +
-                "Tipo Producto =" + tipoProducto + '\'' +
+                "Nombre =" + nombre + '\'' +
                 ", Referencia =" + referencia + '\'' +
                 ", Tipo Cliente =" + tipoCliente + '\'' +
                 ", Talla =" + talla + '\'' +
@@ -109,5 +109,9 @@ public class Producto {
                 ", Precio =" + precio +'\''+
                 ", Cantidad Disponible =" + cantidadDisponible +'\''+
                 '}';
+    }
+
+    public double calcularPrecio() {
+        return 0.0;
     }
 }

@@ -102,6 +102,8 @@ public class Main {
     private static Tienda inicializarDatosPrueba() {
         Tienda tienda = new Tienda();
         tienda.setNombre("Monaco");
+
+
         System.out.println(tienda.getNombre());
 
         return tienda;
