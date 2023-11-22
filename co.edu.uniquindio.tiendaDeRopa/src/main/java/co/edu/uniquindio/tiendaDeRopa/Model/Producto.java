@@ -3,16 +3,21 @@ package co.edu.uniquindio.tiendaDeRopa.Model;
 import co.edu.uniquindio.tiendaDeRopa.Model.Enumeracion.Color;
 import co.edu.uniquindio.tiendaDeRopa.Model.Enumeracion.Talla;
 import co.edu.uniquindio.tiendaDeRopa.Model.Enumeracion.TipoCliente;
+import co.edu.uniquindio.tiendaDeRopa.Model.Enumeracion.TipoProducto;
+import co.edu.uniquindio.tiendaDeRopa.Service.IProducto;
 
-public class Producto {
+public class Producto implements IProducto {
     private String nombre;
     private String referencia;
     private TipoCliente tipoCliente;
+    private TipoProducto tipoProducto;
     private Talla talla;
     private Color color;
     private double precio;
     private int cantidadDisponible;
     Tienda ownedByTienda;
+    private final double IMPUESTO = 0.19;
+    private final double IMPUESTO_ADICIONAL = 0.03;
 
     /* Constructor */
     public Producto() {
@@ -83,6 +88,14 @@ public class Producto {
         this.ownedByTienda = ownedByTienda;
     }
 
+    public TipoProducto getTipoProducto() {
+        return tipoProducto;
+    }
+
+    public void setTipoProducto(TipoProducto tipoProducto) {
+        this.tipoProducto = tipoProducto;
+    }
+
     @Override
     public String toString() {
         return "Producto{" +
@@ -90,13 +103,31 @@ public class Producto {
                 ", Referencia = " + referencia + '\'' +
                 ", Tipo Cliente = " + tipoCliente + '\'' +
                 ", Talla = " + talla + '\'' +
-                ", Color = " + color +'\''+
-                ", Precio = " + precio +'\''+
-                ", Cantidad Disponible = " + cantidadDisponible +'\''+
+                ", Color = " + color + '\'' +
+                ", Precio = " + precio + '\'' +
+                ", Cantidad Disponible = " + cantidadDisponible + '\'' +
                 '}';
     }
 
+    @Override
+    public double calcularPrecioBase() {
+        double precioBase = getPrecio();
+        double precioFinal = 0.0;
+        if (getTipoProducto() == TipoProducto.IMPORTADO) {
+            precioFinal = precioBase + (precioBase * (IMPUESTO + IMPUESTO_ADICIONAL));
+
+        }
+        else if (getTipoProducto() == TipoProducto.NACIONAL){
+            precioFinal = precioBase + (precioBase * IMPUESTO);
+        }
+        return precioFinal;
+    }
+
+    @Override
     public double calcularPrecio() {
-        return 0.0;
+        double precio = calcularPrecioBase();
+        return precio;
     }
 }
+
+

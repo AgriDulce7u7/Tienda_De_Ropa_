@@ -1,7 +1,10 @@
 package co.edu.uniquindio.tiendaDeRopa.Model;
 
-public class Vestido extends Producto{
-    private final double IMPUESTO = 0.19;
+import co.edu.uniquindio.tiendaDeRopa.Model.Enumeracion.TipoProducto;
+
+public class Vestido extends Producto {
+
+    private final double DESCUENTO = 0.1;
 
     /* Constructor */
     public Vestido() {
@@ -9,8 +12,9 @@ public class Vestido extends Producto{
 
     @Override
     public double calcularPrecio() {
-        double precioImpuesto = 0.0;
-        precioImpuesto = getPrecio() * IMPUESTO;
-        return precioImpuesto;
+        double precioBase = super.calcularPrecio();
+        double precioDescuento = precioBase - (precioBase * DESCUENTO);
+        return precioDescuento;
+
     }
 }
