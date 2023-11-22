@@ -27,16 +27,17 @@ public class Camisa extends Producto{
     public double calcularPrecio() {
         double precioBase = super.calcularPrecio();
         double precioDescuento = 0.0;
-        if (tipoCuelloCamisa == TipoCuelloCamisa.ITALIANO){
+        if (tipoCuelloCamisa == TipoCuelloCamisa.ITALIANO) {
             precioDescuento = precioBase - (precioBase * DESCUENTO_ITALIANO);
         }
-        if (tipoCuelloCamisa == TipoCuelloCamisa.AMERICANO){
+        if (tipoCuelloCamisa == TipoCuelloCamisa.AMERICANO) {
             precioDescuento = precioBase - (precioBase * DESCUENTO_AMERICANO);
         }
-        if (tipoCuelloCamisa == TipoCuelloCamisa.INGLES){
+        if (tipoCuelloCamisa == TipoCuelloCamisa.INGLES) {
             precioDescuento = precioBase - (precioBase * DESCUENTO_INGLES);
         }
-        return  precioDescuento;
+        return precioDescuento;
+    }
 }
 
 
