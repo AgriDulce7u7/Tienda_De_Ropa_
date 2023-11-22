@@ -7,10 +7,8 @@ import java.util.List;
 
 public class Tienda {
     private  String nombre;
-
-    List<Cliente> listaClientes = new ArrayList<>();
+    List<Persona> listaPersonas = new ArrayList<>();
     List<Compra> listaCompras = new ArrayList<>();
-    List<Empleado> listaEmpleados = new ArrayList<>();
     List<Producto> listaProductos = new ArrayList<>();
 
     /*Constructor*/
@@ -26,12 +24,12 @@ public class Tienda {
         this.nombre = nombre;
     }
 
-    public List<Cliente> getListaClientes() {
-        return listaClientes;
+    public List<Persona> getListaPersonas() {
+        return listaPersonas;
     }
 
-    public void setListaClientes(List<Cliente> listaClientes) {
-        this.listaClientes = listaClientes;
+    public void setListaPersonas(List<Persona> listaPersonas) {
+        this.listaPersonas = listaPersonas;
     }
 
     public List<Compra> getListaCompras() {
@@ -40,14 +38,6 @@ public class Tienda {
 
     public void setListaCompras(List<Compra> listaCompras) {
         this.listaCompras = listaCompras;
-    }
-
-    public List<Empleado> getListaEmpleados() {
-        return listaEmpleados;
-    }
-
-    public void setListaEmpleados(List<Empleado> listaEmpleados) {
-        this.listaEmpleados = listaEmpleados;
     }
 
     public List<Producto> getListaProductos() {
@@ -61,7 +51,7 @@ public class Tienda {
     @Override
     public String toString() {
         return "Tienda{" +
-                "Nombre='" + nombre + '\'' +
+                "Nombre = " + nombre + '\'' +
                 '}';
     }
 

@@ -7,6 +7,8 @@ public abstract class Persona {
     private String cedula;
     private Sexo sexo;
     private long telefono;
+    private Cliente cliente;
+    private Empleado empleado;
     Tienda ownedByTienda;
 
     /* Constructor */
@@ -44,6 +46,22 @@ public abstract class Persona {
 
     public void setTelefono(long telefono) {
         this.telefono = telefono;
+    }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
+
+    public Empleado getEmpleado() {
+        return empleado;
+    }
+
+    public void setEmpleado(Empleado empleado) {
+        this.empleado = empleado;
     }
 
     public Tienda getOwnedByTienda() {

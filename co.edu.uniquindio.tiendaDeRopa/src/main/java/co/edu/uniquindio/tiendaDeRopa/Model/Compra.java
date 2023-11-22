@@ -1,11 +1,15 @@
 package co.edu.uniquindio.tiendaDeRopa.Model;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class Compra {
     private String codigoCompra;
     private Date fechaCompra;
     private double totalCompra;
+
+    List<DetalleCompra> listaDetalleCompra = new ArrayList<>();
 
     Tienda ownedByTienda;
 
@@ -36,6 +40,14 @@ public class Compra {
 
     public void setTotalCompra(double totalCompra) {
         this.totalCompra = totalCompra;
+    }
+
+    public List<DetalleCompra> getListaDetalleCompra() {
+        return listaDetalleCompra;
+    }
+
+    public void setListaDetalleCompra(List<DetalleCompra> listaDetalleCompra) {
+        this.listaDetalleCompra = listaDetalleCompra;
     }
 
     public Tienda getOwnedByTienda() {
