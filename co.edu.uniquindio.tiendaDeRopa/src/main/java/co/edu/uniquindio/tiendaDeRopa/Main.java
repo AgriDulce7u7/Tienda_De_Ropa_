@@ -1,11 +1,10 @@
 package co.edu.uniquindio.tiendaDeRopa;
 
-import co.edu.uniquindio.tiendaDeRopa.Model.Cliente;
-import co.edu.uniquindio.tiendaDeRopa.Model.Compra;
-import co.edu.uniquindio.tiendaDeRopa.Model.Empleado;
+import co.edu.uniquindio.tiendaDeRopa.Model.*;
+import co.edu.uniquindio.tiendaDeRopa.Model.Enumeracion.Color;
 import co.edu.uniquindio.tiendaDeRopa.Model.Enumeracion.Sexo;
-import co.edu.uniquindio.tiendaDeRopa.Model.Producto;
-import co.edu.uniquindio.tiendaDeRopa.Model.Tienda;
+import co.edu.uniquindio.tiendaDeRopa.Model.Enumeracion.Talla;
+import co.edu.uniquindio.tiendaDeRopa.Model.Enumeracion.TipoCliente;
 import co.edu.uniquindio.tiendaDeRopa.Util.CapturaDatosUtil;
 
 import java.util.InputMismatchException;
@@ -17,6 +16,8 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Tienda tienda = inicializarDatosPrueba();
+        Producto producto1 = tienda.mostrarProducto("agh789");
+
 
         /** Funciones CRUD
          * */
@@ -103,6 +104,18 @@ public class Main {
         Tienda tienda = new Tienda();
         tienda.setNombre("Monaco");
 
+        Vestido vestido = new Vestido();
+        vestido.setNombre("Semi ajustado");
+        vestido.setReferencia("agh789");
+        vestido.setTipoCliente(TipoCliente.MUJER);
+        vestido.setTalla(Talla.M);
+        vestido.setColor(Color.NEGRA);
+        vestido.setPrecio(78000.0);
+        vestido.setCantidadDisponible(6);
+
+        vestido.setOwnedByTienda(tienda);
+
+        tienda.getListaProductos().add(vestido);
 
         System.out.println(tienda.getNombre());
 

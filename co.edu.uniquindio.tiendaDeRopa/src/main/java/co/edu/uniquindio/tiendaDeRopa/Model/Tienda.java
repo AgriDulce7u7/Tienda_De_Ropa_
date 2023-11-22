@@ -125,7 +125,7 @@ public class Tienda implements ITienda {
         for (Producto producto : getListaProductos()) {
             if (producto.getReferencia().equalsIgnoreCase(referencia)) {
                 productoEncontrado = producto;
-                System.out.println(producto.obtenerInformacion());
+                System.out.println(producto.toString());
                 break;
             }
         }

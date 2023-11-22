@@ -83,31 +83,16 @@ public class Producto {
         this.ownedByTienda = ownedByTienda;
     }
 
-    /* Obtener la información de las prendas */
-    public String obtenerInformacion(){
-        String informacion = "";
-        informacion = informacion +
-                "Nombre: "+ getNombre()+"\n"+
-                "Referencia: "+getReferencia()+"\n"+
-                "Tipo de Cliente: "+getTipoCliente()+"\n"+
-                "Talla: "+getTalla()+"\n"+
-                "Color: "+getColor()+"\n"+
-                "Precio: "+getPrecio()+"\n"+
-                "Cantidad Disponible: "+getCantidadDisponible()+"\n";
-        System.out.println(informacion);
-        return informacion;
-    }
-
     @Override
     public String toString() {
         return "Producto{" +
-                "Nombre =" + nombre + '\'' +
-                ", Referencia =" + referencia + '\'' +
-                ", Tipo Cliente =" + tipoCliente + '\'' +
-                ", Talla =" + talla + '\'' +
-                ", Color =" + color +'\''+
-                ", Precio =" + precio +'\''+
-                ", Cantidad Disponible =" + cantidadDisponible +'\''+
+                "Nombre = " + nombre + '\'' +
+                ", Referencia = " + referencia + '\'' +
+                ", Tipo Cliente = " + tipoCliente + '\'' +
+                ", Talla = " + talla + '\'' +
+                ", Color = " + color +'\''+
+                ", Precio = " + precio +'\''+
+                ", Cantidad Disponible = " + cantidadDisponible +'\''+
                 '}';
     }
 
