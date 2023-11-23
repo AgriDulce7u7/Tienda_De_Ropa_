@@ -303,7 +303,7 @@ public class Tienda implements ITienda {
         }
     }
 
-    public void buscarProducto(String referencia) {
+    public boolean buscarProducto(String referencia) {
         Producto productoEncontrado = obtenerProducto(referencia);
         if(productoEncontrado != null){
             System.out.println("El producto fue encontrado con éxito.");
@@ -311,6 +311,7 @@ public class Tienda implements ITienda {
         }else{
             System.out.println("El producto no fue encontraddo.");
         }
+        return true;
     }
 
     public Producto buscarProductos(String referencia) {
