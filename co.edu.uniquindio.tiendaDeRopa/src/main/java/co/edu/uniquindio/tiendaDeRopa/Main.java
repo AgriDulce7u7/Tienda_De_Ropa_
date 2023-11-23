@@ -145,6 +145,11 @@ public class Main {
                     buscarCliente(tienda);
                     break;
                 case 6:
+                    obtenerClienteConMasCompras(tienda);
+                    break;
+                case 7:
+                    mostrarClienteConMasComprasAsociadas(tienda);
+                case 8:
                     int valorRespuesta = mostrarMensajeAlerta("Esta seguro de desea salir de la aplicación.");
                     if(valorRespuesta == 1){
                         opcion = 0;
@@ -154,7 +159,7 @@ public class Main {
                     mostrarMensaje("La opción seleccionada no es una opción valida.");
                     break;
             }
-        }while (opcion != 6);
+        }while (opcion != 8);
     }
 
     private static void gestionarOpcionesEmpleado(Tienda tienda) {
@@ -274,7 +279,9 @@ public class Main {
         System.out.println("3 - Actualizar cliente");
         System.out.println("4 - Eliminar cliente");
         System.out.println("5 - Buscar cliente");
-        System.out.println("6 - Salir");
+        System.out.println("6 - Obtener el cliente con más prendas compradas: ");
+        System.out.println("7 - Obtener el cliente con más compras: ");
+        System.out.println("8 - Salir");
     }
 
     private static void mostrarMenuCrudEmpleado() {
@@ -349,6 +356,13 @@ public class Main {
     private static void buscarCliente(Tienda tienda) {
         String cedula = leerStringConsola("Ingrese la cédula del cliente: ");
         tienda.buscarCliente(cedula);
+    }
+
+    private static void obtenerClienteConMasCompras(Tienda tienda){
+        tienda.obtenerClienteConMasCompras();
+    }
+    private static void mostrarClienteConMasComprasAsociadas(Tienda tienda){
+        tienda.mostrarClienteConMasComprasAsociadas();
     }
 
     private static void crearEmpleado(Tienda tienda) {

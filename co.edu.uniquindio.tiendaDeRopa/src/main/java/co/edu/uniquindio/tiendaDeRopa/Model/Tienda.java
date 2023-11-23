@@ -160,6 +160,33 @@ public class Tienda implements ITienda {
         return null;
     }
 
+    public int obtenerClienteConMasCompras() {
+        int clienteMayorCompras = 0;
+        for (Cliente cliente : getListaClientes()) {
+            if (cliente.getPrendasCompradas() > clienteMayorCompras){
+                clienteMayorCompras = cliente.getPrendasCompradas();
+            }
+            System.out.println("El cliente con más prendas compradas es: "+ clienteMayorCompras);
+            break;
+        }
+        return clienteMayorCompras;
+    }
+
+    public String mostrarClienteConMasComprasAsociadas(){
+        int compras = 0;
+        Cliente clienteMasCompras = null;
+        for (Cliente cliente : getListaClientes()) {
+            if (cliente.getComprasAsociadas().size() > compras){
+                compras = cliente.getComprasAsociadas().size();
+                clienteMasCompras = cliente;
+            }
+        }
+        String mensaje = "El cliente con más compras es: \n"+
+                clienteMasCompras.toString()+"\n"+
+                "El número de compras hechas por este cliente es: "+ compras;
+        return mensaje;
+    }
+
     @Override
     public boolean crearEmpleado(String nombreCompleto, String cedula, Sexo sexo, long telefono, String correo, double salario, TipoContrato tipoContrato, int horasTrabajo, String codigoCompra) {
         if (buscarEmpleados(cedula) == null){

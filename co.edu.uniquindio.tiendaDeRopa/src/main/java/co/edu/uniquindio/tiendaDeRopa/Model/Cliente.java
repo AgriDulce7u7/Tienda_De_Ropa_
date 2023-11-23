@@ -3,12 +3,15 @@ package co.edu.uniquindio.tiendaDeRopa.Model;
 import co.edu.uniquindio.tiendaDeRopa.Model.Enumeracion.MetodoPago;
 import co.edu.uniquindio.tiendaDeRopa.Model.Enumeracion.Sexo;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class Cliente extends Persona{
     private int prendasCompradas;
     private Date fechaUltimaCompra;
     private MetodoPago metodoPago;
+    private List<Compra> comprasAsociadas = new ArrayList<>();
 
     Tienda ownedByTienda;
 
@@ -39,6 +42,14 @@ public class Cliente extends Persona{
 
     public void setMetodoPago(MetodoPago metodoPago) {
         this.metodoPago = metodoPago;
+    }
+
+    public List<Compra> getComprasAsociadas() {
+        return comprasAsociadas;
+    }
+
+    public void setComprasAsociadas(List<Compra> comprasAsociadas) {
+        this.comprasAsociadas = comprasAsociadas;
     }
 
     public Tienda getOwnedByTienda() {
