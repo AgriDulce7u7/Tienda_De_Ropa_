@@ -9,6 +9,7 @@ import java.util.List;
 public class Tienda implements ITienda {
     private  String nombre;
     List<Cliente> listaClientes = new ArrayList<>();
+    List<Persona listaPersonas = new ArrayList<>();
     List<Empleado> listaEmpleado = new ArrayList<>();
     List<Compra> listaCompras = new ArrayList<>();
     List<Producto> listaProductos = new ArrayList<>();
@@ -24,6 +25,14 @@ public class Tienda implements ITienda {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+
+    public List<Persona> getListaPersonas() {
+        return listaPersonas;
+    }
+
+    public void setListaPersonas(List<Persona> listaPersonas) {
+        this.listaPersonas = listaPersonas;
     }
 
     public List<Cliente> getListaClientes() {
@@ -65,9 +74,7 @@ public class Tienda implements ITienda {
                 '}';
     }
 
-    /**
-     * Método para crear un cliente
-     */
+    /* Método para crear un cliente */
     public boolean crearCliente(String nombreCompleto, String cedula, Sexo sexo, int prendasCompradas, String fechaUltimaCompra){
         Cliente cliente = new Cliente();
         cliente.setNombreCompleto(nombreCompleto);
@@ -88,9 +95,7 @@ public class Tienda implements ITienda {
         return getListaClientes();
     }
 
-    /**
-     * Método para actualizar un cliente por medio de la cedula
-     * */
+    /* Método para actualizar un cliente por medio de la cedula */
     public void actualizarCliente(String cedula,String nuevoNombreCompleto, Sexo nuevoSexo, int nuevaPrendasCompradas, String nuevoFechaUltimaCompra) {
         for (Cliente cliente : listaClientes) {
             if (cliente.getCedula().equals(cedula)) {
@@ -104,9 +109,7 @@ public class Tienda implements ITienda {
         }
     }
 
-    /**
-     * Método para eliminar un cliente por medio de la cedula
-     * */
+    /* Método para eliminar un cliente por medio de la cedula */
     public void eliminarCliente(String cedula) {
         int tamanioLista = getListaClientes().size();
         for (int i=0; i < tamanioLista; i++){

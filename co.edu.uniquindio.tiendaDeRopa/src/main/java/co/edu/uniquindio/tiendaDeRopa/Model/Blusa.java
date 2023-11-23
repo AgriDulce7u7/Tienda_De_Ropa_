@@ -12,7 +12,6 @@ public class Blusa extends Producto{
     }
 
     /* Getters and setters*/
-
     public TipoBlusa getTipoBlusa() {
         return tipoBlusa;
     }
