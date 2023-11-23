@@ -74,6 +74,7 @@ public class Main {
 
         /* CRUD DetalleCompra*/
         //Create
+        tienda.crearDetalleCompra(155, "Blusa", 3, 20000, 60000, "556", "Crop213");
 
         //Read
 

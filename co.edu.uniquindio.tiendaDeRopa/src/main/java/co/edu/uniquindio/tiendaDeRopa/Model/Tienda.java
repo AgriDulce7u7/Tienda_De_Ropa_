@@ -465,7 +465,23 @@ public class Tienda implements ITienda {
 
     @Override
     public boolean crearDetalleCompra(int numeroDetalle, String productoComprado, int cantidadCompra, double valorUnidad, double valorTotal, String codigoCompra, String referencia) {
-        return false;
+        Producto producto = obtenerProducto(referencia);
+        if (producto == null){
+            return false;
+        }
+
+        DetalleCompra detalleCompra = new DetalleCompra();
+        detalleCompra.setNumeroDetalle(numeroDetalle);
+        detalleCompra.setProductoComprado(productoComprado);
+        detalleCompra.setCantidadComprado(cantidadCompra);
+        detalleCompra.setValorUnidad(valorUnidad);
+        detalleCompra.setValorTotal(valorTotal);
+        detalleCompra.setProductoAsociado(producto);
+
+        getListaDetalleCompra().add(detalleCompra);
+
+        return true;
+
     }
 
     @Override
