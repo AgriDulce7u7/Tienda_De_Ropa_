@@ -327,7 +327,7 @@ public class Tienda implements ITienda {
 
     @Override
     public boolean crearCompra(String codigoCompra, Date fechaCompra, double totalCompra, String cedulaCliente, String cedulaEmpleado) {
-        if (buscarCompra(referencia) == null) {
+        if (buscarCompra(codigoCompra) == null) {
             Cliente cliente = obtenerCliente(cedulaCliente);
             Empleado empleado = obtenerEmpleado(cedulaEmpleado);
             if (cliente == null || empleado == null){
@@ -348,7 +348,15 @@ public class Tienda implements ITienda {
 
     @Override
     public Compra obtenerCompra(String codigoCompra) {
-        return null;
+        Compra compraEncontrada = null;
+        for (Compra compra : getListaCompras()) {
+            if (compra.getCodigoCompra().equalsIgnoreCase(codigoCompra)){
+               compraEncontrada = compra;
+                break;
+            }
+        }
+
+        return compraEncontrada;
     }
 
     @Override
@@ -359,6 +367,16 @@ public class Tienda implements ITienda {
     @Override
     public void eliminarCompra(String codigoCompra) {
     }
+
+    public Compra buscarCompra(String codigoCompra){
+        for (Compra compra : getListaCompras()) {
+            if (compra.getCodigoCompra().equalsIgnoreCase(codigoCompra)){
+                return compra;
+            }
+        }
+        return null;
+    }
+
 
     @Override
     public boolean crearDetalleCompra(int numeroDetalle, String productoComprado, int cantidadCompra, double valorUnidad, double valorTotal, String codigoCompra, String referencia) {

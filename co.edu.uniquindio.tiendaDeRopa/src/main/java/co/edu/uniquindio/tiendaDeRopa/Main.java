@@ -17,7 +17,7 @@ public class Main {
         Tienda tienda = inicializarDatosPrueba();
         Cliente cliente = tienda.obtenerCliente("1004830265");
         Producto producto1 = tienda.mostrarProducto("agh789");
-        tienda.crearCompra("123f", new Date(23, 6, 21, 14, 0), 52000, "1004830265", "1520623205");
+        //tienda.crearCompra("123f", new Date(23, 6, 21, 14, 0), 52000, "1004830265", "1520623205");
 
 
         /* Funciones CRUD Cliente */
