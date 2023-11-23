@@ -6,7 +6,7 @@ import co.edu.uniquindio.tiendaDeRopa.Model.Enumeracion.TipoCliente;
 import co.edu.uniquindio.tiendaDeRopa.Model.Enumeracion.TipoProducto;
 import co.edu.uniquindio.tiendaDeRopa.Service.IProducto;
 
-public class Producto implements IProducto {
+public abstract class Producto implements IProducto {
     private String nombre;
     private String referencia;
     private TipoCliente tipoCliente;
