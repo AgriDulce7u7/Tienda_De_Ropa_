@@ -235,13 +235,13 @@ public class Main {
                     crearCompra(tienda);
                     break;
                 case 2:
-                    actualizarCompra(tienda);
+                    //actualizarCompra(tienda);
                     break;
                 case 3:
-                    eliminarCompra(tienda);
+                    //eliminarCompra(tienda);
                     break;
                 case 4:
-                    buscarCompra(tienda);
+                    //buscarCompra(tienda);
                     break;
                 case 5:
                     int valorRespuesta = mostrarMensajeAlerta("Esta seguro de desea salir de la aplicación.");

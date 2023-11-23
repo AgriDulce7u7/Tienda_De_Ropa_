@@ -358,7 +358,23 @@ public class Tienda implements ITienda {
 
     @Override
     public boolean crearDetalleCompra(int numeroDetalle, String productoComprado, int cantidadCompra, double valorUnidad, double valorTotal, String codigoCompra, String referencia) {
-        return false;
+        if (buscarCompra(referencia) == null) {
+            Cliente cliente = obtenerCliente(cedulaCliente);
+            Empleado empleado = obtenerEmpleado(cedulaEmpleado);
+            if (cliente == null || empleado == null){
+                return false;
+            }
+            Compra compra = new Compra();
+            compra.setCodigoCompra(codigoCompra);
+            compra.setFechaCompra(fechaCompra);
+            compra.setTotalCompra(totalCompra);
+            compra.setClienteAsociado(cliente);
+            compra.setEmpleadoAsociado(empleado);
+            getListaCompras().add(compra);
+            return true;
+        }else {
+            return false;
+        }
     }
 
     @Override
