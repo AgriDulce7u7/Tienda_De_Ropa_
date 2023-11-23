@@ -370,6 +370,7 @@ public class Main {
     private static void obtenerClienteConMasCompras(Tienda tienda){
         tienda.obtenerClienteConMasCompras();
     }
+
     private static void mostrarClienteConMasComprasAsociadas(Tienda tienda){
         tienda.mostrarClienteConMasComprasAsociadas();
     }
