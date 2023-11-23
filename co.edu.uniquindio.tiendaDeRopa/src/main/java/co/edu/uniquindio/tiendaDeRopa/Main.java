@@ -240,7 +240,7 @@ public class Main {
                     crearCompra(tienda);
                     break;
                 case 2:
-                    //actualizarCompra(tienda);
+                    actualizarCompra(tienda);
                     break;
                 case 3:
                     //eliminarCompra(tienda);
@@ -470,6 +470,21 @@ public class Main {
             System.out.println("La compra fue creada con éxito.");
         }else{
             System.out.println("La compra no pudo ser creada.");
+        }
+    }
+
+    private static void actualizarCompra(Tienda tienda) {
+        String codigoCompraActual = leerStringConsola("Ingrese el codigo de la compra: ");
+        String codigoCompra = leerStringConsola("Ingrese el codigo de la compra: ");
+        Date fechaCompra = new Date(23, 6, 18, 11, 0);
+        double totalCompra = leerDoubleConsola("Ingrese el total de la compra: ");
+        String cedulaEmpleadoAsociado = leerStringConsola("Ingrese la cédula del empleado que realizo la compra: ");
+        String cedulaClienteAsociado = leerStringConsola("Ingrese la cédula del cliente que hizo la compra: ");
+        boolean flagCreado = tienda.actualizarCompra(codigoCompraActual, codigoCompra, fechaCompra, totalCompra, cedulaEmpleadoAsociado, cedulaClienteAsociado);
+        if(flagCreado == true){
+            System.out.println("La compra fue actualizada con éxito.");
+        }else{
+            System.out.println("La compra no pudo ser actualizada.");
         }
     }
 

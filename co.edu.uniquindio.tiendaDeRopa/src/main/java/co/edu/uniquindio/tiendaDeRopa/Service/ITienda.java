@@ -80,7 +80,8 @@ public interface ITienda {
                         String cedulaEmpleado);
 
     Compra obtenerCompra(String codigoCompra);
-    boolean actualizarCompra(String codigoCompra,
+    boolean actualizarCompra(String codigoCompraActual,
+                             String codigoCompra,
                              Date fechaCompra,
                              double totalCompra,
                              String cedulaCliente,

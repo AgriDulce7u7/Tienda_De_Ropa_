@@ -6,6 +6,7 @@ public class DetalleCompra {
     private  int cantidadComprado;
     private double valorUnidad;
     private double valorTotal;
+    private Producto productoAsociado;
     Compra ownedByCompra;
 
     /* Constructor */
@@ -52,6 +53,14 @@ public class DetalleCompra {
 
     public void setValorTotal(double valorTotal) {
         this.valorTotal = valorTotal;
+    }
+
+    public Producto getProductoAsociado() {
+        return productoAsociado;
+    }
+
+    public void setProductoAsociado(Producto productoAsociado) {
+        this.productoAsociado = productoAsociado;
     }
 
     public Compra getOwnedByCompra() {

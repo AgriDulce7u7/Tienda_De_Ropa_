@@ -366,6 +366,7 @@ public class Tienda implements ITienda {
                 compra.setTotalCompra(totalCompra);
                 compra.setClienteAsociado(cliente);
                 compra.setEmpleadoAsociado(empleado);
+                compra.crearDetalleCompra();
                 getListaCompras().add(compra);
                 return true;
             }
@@ -388,8 +389,40 @@ public class Tienda implements ITienda {
     }
 
     @Override
-    public boolean actualizarCompra(String codigoCompra, Date fechaCompra, double totalCompra, String cedulaCliente, String cedulaEmpleado) {
-        return false;
+    public boolean actualizarCompra(String codigoCompraActual, String codigoCompra, Date fechaCompra, double totalCompra, String cedulaCliente, String cedulaEmpleado) {
+//        Compra compraEncontrada = obtenerCompra(codigoCompraActual);
+//        if(compraEncontrada != null){
+//            compraEncontrada.setCodigoCompra(codigoCompra);
+//            compraEncontrada.setFechaCompra(fechaCompra);
+//            compraEncontrada.setTotalCompra(totalCompra);
+//
+//            return true;
+//        }else{
+//            return false;
+//        }
+        Empleado empleadoAsociado;
+        Cliente clienteAsociado;
+
+        if (obtenerCompra(codigoCompra) == null || codigoCompra == codigoCompraActual){
+            empleadoAsociado = obtenerEmpleado(cedulaEmpleado);
+            clienteAsociado = obtenerCliente(cedulaCliente);
+
+            if (empleadoAsociado == null || clienteAsociado == null){
+                return false;
+
+            }else{
+                Compra compra = obtenerCompra(codigoCompra);
+                compra.setCodigoCompra(codigoCompra);
+                compra.setFechaCompra(fechaCompra);
+                compra.setTotalCompra(totalCompra);
+                compra.setClienteAsociado(clienteAsociado);
+                compra.setEmpleadoAsociado(empleadoAsociado);
+                compra.crearDetalleCompra(cantidad, fechaCompra, idProductoAsociado);
+                return true;
+            }
+        }else{
+            return false;
+        }
     }
 
     @Override
