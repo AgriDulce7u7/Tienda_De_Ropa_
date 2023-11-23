@@ -23,6 +23,18 @@ public class Producto implements IProducto {
     public Producto() {
     }
 
+    public Producto(String nombre, String referencia, TipoCliente tipoCliente, TipoProducto tipoProducto,
+                    Talla talla, Color color, double precio, int cantidadDisponible) {
+        this.nombre = nombre;
+        this.referencia = referencia;
+        this.tipoCliente = tipoCliente;
+        this.tipoProducto = tipoProducto;
+        this.talla = talla;
+        this.color = color;
+        this.precio = precio;
+        this.cantidadDisponible = cantidadDisponible;
+    }
+
     /* Getters and Setters */
     public String getNombre() {
         return nombre;
