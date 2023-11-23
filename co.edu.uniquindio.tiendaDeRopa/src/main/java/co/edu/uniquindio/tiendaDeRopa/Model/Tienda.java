@@ -290,7 +290,8 @@ public class Tienda implements ITienda {
             return true;
         }else{
             return false;
-        }    }
+        }
+    }
 
     @Override
     public void eliminarProducto(String referencia) {

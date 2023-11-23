@@ -30,7 +30,7 @@ public class Main {
         //Update
         actualizarCliente("1", "Karen Escarraga", "1010660485", Sexo.FEMENINO, 305912565, 12, new Date(22, 4, 3, 11, 00), MetodoPago.EFECTIVO, "ter8", tienda);
         //Delete
-        eliminarCliente(tienda, "1004830265");
+        eliminarCliente(tienda, "1");
         System.out.println("-----> Informacion luego de eliminar");
         mostrarInformacionCliente(tienda);
 
@@ -39,29 +39,30 @@ public class Main {
         //Create
         crearEmpleado("Luis Ortiz Ruiz", "1094838275", Sexo.FEMENINO, 312356558, "argy78@", 1200000, TipoContrato.HORAS, 22, "156e", tienda);
         crearEmpleado("Isabel Chica Mora", "1010660485", Sexo.FEMENINO, 315454543, "hyu@d",1300000, TipoContrato.MEDIO_TIEMPO, 15, "guyi89",tienda);
-        crearEmpleado("Santiago Ramirez", "152062320", Sexo.MASCULINO, 302156986, "santi@h78", 1450000, TipoContrato.HORAS, 32, "tre31", tienda);
+        crearEmpleado("Santiago Ramirez", "15206232", Sexo.MASCULINO, 302156986, "santi@h78", 1450000, TipoContrato.HORAS, 32, "tre31", tienda);
         //Read
         mostrarInformacionEmpleado(tienda);
         //Update
-        actualizarEmpleado("152062320","Santiago Ramirez", "15206232012", Sexo.MASCULINO, 302156986, "santi@h78", 1450000, TipoContrato.HORAS, 32, "tre31", tienda);
+        actualizarEmpleado("15206232","Santiago Ramirez", "15206232012", Sexo.MASCULINO, 302156986, "santi@h78", 1450000, TipoContrato.HORAS, 32, "tre31", tienda);
         //Delete
-        eliminarEmpleado(tienda, "1520623205");
+        eliminarEmpleado(tienda, "1");
 
 
         /* CRUD Producto */
         //Create
-        crearProducto("Bomber", "yui09", TipoCliente.HOMBRE, TipoProducto.IMPORTADO, Talla.XL, Color.AZUL, 120000, 14, 1, tienda);
-        crearProducto("Bomber", "yui09", TipoCliente.HOMBRE, TipoProducto.IMPORTADO, Talla.XL, Color.AZUL, 120000, 14, 1, tienda);
-        crearProducto("Bomber", "yui09", TipoCliente.HOMBRE, TipoProducto.IMPORTADO, Talla.XL, Color.AZUL, 120000, 14, 1, tienda;
+        crearProducto("Chaqueta Bomber", "tui09", TipoCliente.HOMBRE, TipoProducto.IMPORTADO, Talla.XL, Color.ROSADA, 120000, 14, 1, tienda);
+        crearProducto("Vestido Semi ajustado", "hy7t", TipoCliente.MUJER, TipoProducto.NACIONAL, Talla.S, Color.NEGRA, 75000, 10, 1, tienda);
+        crearProducto("Jean Looser", "pant65", TipoCliente.HOMBRE, TipoProducto.IMPORTADO, Talla.L, Color.AZUL, 150000, 20, 2, tienda);
         //Read
         mostrarInformacionProducto(tienda);
         //Update
-        actualizarProducto();
+        actualizarProducto("yui09", "Camisa Leñadora", "ret5", TipoCliente.HOMBRE, TipoProducto.IMPORTADO, Talla.M, Color.LILA, 95000, 9, 3, tienda);
         //Delete
-        eliminarProducto();
+        eliminarProducto(tienda, "h");
 
         /* CRUD Compra */
         //Create
+        crearCompra("ret5", new Date(23, 1, 15, 9,0), 59000, "91850274", "1010660485", tienda);
 
         //Read
         tienda.obtenerCompra("");
@@ -79,6 +80,7 @@ public class Main {
         //Update
 
         //Delete
+
 
 
 
@@ -101,7 +103,7 @@ public class Main {
                     gestionarOpcionesProducto(tienda);
                     break;
                 case 4:
-                    //gestionarOpcionesCompra(tienda);
+                    gestionarOpcionesCompra(tienda);
                     break;
                 case 5:
                     //gestionarOpcionesDetalleCompra(tienda);
@@ -109,7 +111,7 @@ public class Main {
                 case 6:
                     break;
                 case 7:
-                    int valorRespuesta = mostrarMensajeAlerta("Esta seguro de desea sali de la aplicación");
+                    int valorRespuesta = mostrarMensajeAlerta("Esta seguro de desea salir de la aplicación");
                     if(valorRespuesta == 1){
                         opcion = 0;
                     }
@@ -143,7 +145,7 @@ public class Main {
                     buscarCliente(tienda);
                     break;
                 case 6:
-                    int valorRespuesta = mostrarMensajeAlerta("Esta seguro de desea sali de la aplicación.");
+                    int valorRespuesta = mostrarMensajeAlerta("Esta seguro de desea salir de la aplicación.");
                     if(valorRespuesta == 1){
                         opcion = 0;
                     }
@@ -177,7 +179,7 @@ public class Main {
                     buscarEmpleado(tienda);
                     break;
                 case 6:
-                    int valorRespuesta = mostrarMensajeAlerta("Esta seguro de desea sali de la aplicación.");
+                    int valorRespuesta = mostrarMensajeAlerta("Esta seguro de desea salir de la aplicación.");
                     if(valorRespuesta == 1){
                         opcion = 0;
                     }
@@ -211,7 +213,7 @@ public class Main {
                     buscarProducto(tienda);
                     break;
                 case 6:
-                    int valorRespuesta = mostrarMensajeAlerta("Esta seguro de desea sali de la aplicación.");
+                    int valorRespuesta = mostrarMensajeAlerta("Esta seguro de desea salir de la aplicación.");
                     if(valorRespuesta == 1){
                         opcion = 0;
                     }
@@ -221,6 +223,37 @@ public class Main {
                     break;
             }
         }while (opcion != 6);
+    }
+
+    private static void gestionarOpcionesCompra(Tienda tienda) {
+        int opcion = 0;
+        do {
+            mostrarMenuCrudCompra();
+            opcion = leerEntero("Seleccione la opcion de gestión de las compras: ");
+            switch (opcion) {
+                case 1:
+                    crearCompra(tienda);
+                    break;
+                case 2:
+                    actualizarCompra(tienda);
+                    break;
+                case 3:
+                    eliminarCompra(tienda);
+                    break;
+                case 4:
+                    buscarCompra(tienda);
+                    break;
+                case 5:
+                    int valorRespuesta = mostrarMensajeAlerta("Esta seguro de desea salir de la aplicación.");
+                    if(valorRespuesta == 1){
+                        opcion = 0;
+                    }
+                    break;
+                default:
+                    mostrarMensaje("La opción seleccionada no es una opción valida.");
+                    break;
+            }
+        }while (opcion != 5);
     }
 
     private static void mostrarMenuPrincipal() {
@@ -262,6 +295,15 @@ public class Main {
         System.out.println("4 - Eliminar producto");
         System.out.println("5 - Buscar producto");
         System.out.println("6 - Salir");
+    }
+
+    private static void mostrarMenuCrudCompra() {
+        System.out.println("Menú gestion compras: ");
+        System.out.println("1 - Crear compra");
+        System.out.println("2 - Actualizar compra");
+        System.out.println("3 - Eliminar compra");
+        System.out.println("4 - Buscar compra");
+        System.out.println("5 - Salir");
     }
 
     private static void crearCliente(Tienda tienda) {
@@ -403,6 +445,20 @@ public class Main {
         tienda.buscarProducto(referencia);
     }
 
+    private static void crearCompra(Tienda tienda) {
+        String codigoCompra = leerStringConsola("Ingrese el codigo de la compra: ");
+        Date fechaCompra = new Date(23, 6, 18, 11, 0);
+        double totalCompra = leerDoubleConsola("Ingrese el total de la compra: ");
+        String cedulaEmpleadoAsociado = leerStringConsola("Ingrese la cédula del empleado que realizo la compra: ");
+        String cedulaClienteAsociado = leerStringConsola("Ingrese la cédula del cliente que hizo la compra: ");
+        boolean flagCreado = tienda.crearCompra(codigoCompra, fechaCompra, totalCompra, cedulaEmpleadoAsociado, cedulaClienteAsociado);
+        if(flagCreado == true){
+            System.out.println("La compra fue creada con éxito.");
+        }else{
+            System.out.println("La compra no pudo ser creada.");
+        }
+    }
+
     /* Método para inializar  los datos de la tienda */
     private static Tienda inicializarDatosPrueba() {
         Tienda tienda = new Tienda();
@@ -427,7 +483,7 @@ public class Main {
 
         Empleado empleado = new Empleado();
         empleado.setNombreCompleto("Santiago Ramirez");
-        empleado.setCedula("1520623205");
+        empleado.setCedula("15206232");
         empleado.setSexo(Sexo.MASCULINO);
         empleado.setTelefono(302156986);
         empleado.setCorreo("santi@h78");
@@ -517,6 +573,27 @@ public class Main {
     public static void crearProducto(String nombre, String referencia, TipoCliente tipoCliente, TipoProducto tipoProducto, Talla talla, Color color, double precio, int cantidadDisponible, int numeroDetalle, Tienda tienda){
         tienda.crearProducto(nombre, referencia, tipoCliente, tipoProducto, talla, color, precio, cantidadDisponible, numeroDetalle);
     }
+
+    /* Método para leer lista de productos */
+    private static void mostrarInformacionProducto(Tienda tienda) {
+        List<Producto> listaProductos = tienda.obtenerProductos();
+        int tamanioLista = listaProductos.size();
+        for(int i=0; i < tamanioLista; i++){
+            Producto producto = listaProductos.get(i);
+            System.out.println(producto.toString());
+        }
+    }
+
+    /* Método para acualizar un producto */
+    private static void actualizarProducto(String referenciaActual, String nombre, String referencia, TipoCliente tipoCliente, TipoProducto tipoProducto, Talla talla, Color color, double precio, int cantidadDisponible, int numeroDetalle, Tienda tienda){
+        tienda.actualizarProducto(referenciaActual, nombre, referencia, tipoCliente, tipoProducto, talla, color, precio, cantidadDisponible, numeroDetalle);
+    }
+
+    /* Método para  eliminar un empleado */
+    private static void eliminarProducto(Tienda tienda, String referencia) {
+        tienda.eliminarProducto(referencia);
+    }
+
     /* Método para crear compra */
     private static void crearCompra(String codigoCompra, Date fechaCompra, double totalCompra, String cedulaCliente, String cedulaEmpleado,Tienda tienda) {
         tienda.crearCompra(codigoCompra, fechaCompra, totalCompra, cedulaCliente, cedulaEmpleado);
