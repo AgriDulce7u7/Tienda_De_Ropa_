@@ -15,7 +15,6 @@ import static co.edu.uniquindio.tiendaDeRopa.Util.CapturaDatosUtil.leerEntero;
 public class Main {
     public static void main(String[] args) {
         Tienda tienda = inicializarDatosPrueba();
-        gestionarOpcionesAplicacionPrestamoUQ(tienda);
         Cliente cliente = tienda.obtenerCliente("1004830265");
         Producto producto1 = tienda.mostrarProducto("agh789");
         Date fechaUltimaCompra1 = new Date(23, 7, 6, 16, 0);
@@ -47,11 +46,13 @@ public class Main {
 
 
         /* CRUD Empleado */
-        //crearEmpleado("Luis Ortiz Ruiz", "1094838275", Sexo.FEMENINO, 3123565, 1200000,tienda);
-        //crearEmpleado("Isabel Chica Mora", "1010660485", Sexo.FEMENINO, 3154545, ,tienda);
+        crearEmpleado("Luis Ortiz Ruiz", "1094838275", Sexo.FEMENINO, 3123565, "argy78@", 1200000, TipoContrato.HORAS, 12, "156", tienda);
+        crearEmpleado("Isabel Chica Mora", "1010660485", Sexo.FEMENINO, 315454543, "hyu@d",5982, TipoContrato.MEDIO_TIEMPO, 15, "guyi89",tienda);
         /* CRUD Producto */
         /* CRUD Compra */
         /* CRUD DetalleCompra*/
+
+        gestionarOpcionesAplicacionPrestamoUQ(tienda);
     }
     /* Menú para gestionar las aplicaciones del proyecto */
     private static void gestionarOpcionesAplicacionPrestamoUQ(Tienda tienda) {
@@ -439,6 +440,10 @@ public class Main {
     /* Método para crear clientes */
     private static void crearCliente(String nombreCompleto, String cedula, Sexo sexo, long telefono, int prendasCompradas, Date fechaUltimaCompra, MetodoPago metodoPago, String codigoCompra, Tienda tienda) {
         tienda.crearCliente(nombreCompleto, cedula, sexo, telefono, prendasCompradas, fechaUltimaCompra, metodoPago, codigoCompra);
+    }
+
+    private static void crearEmpleado(String nombreCompleto, String cedula, Sexo sexo, long telefono, String correo, double salario, TipoContrato tipoContrato, int horasTrabajo, String codigoCompra, Tienda tienda){
+        tienda.crearEmpleado(nombreCompleto, cedula, sexo, telefono, correo, salario, tipoContrato, horasTrabajo, codigoCompra);
     }
 
 
