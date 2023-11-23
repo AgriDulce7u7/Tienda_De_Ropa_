@@ -71,10 +71,9 @@ public class Main {
         //Delete
 
 
-
         /* CRUD DetalleCompra*/
         //Create
-        tienda.crearDetalleCompra(155, "Blusa", 3, 20000, 60000, "556", "Crop213");
+        crearDetalleCompra(155, "Blusa", 3, 20000, 60000, "556", "Crop213");
 
         //Read
 
@@ -661,5 +660,9 @@ public class Main {
     /* Método para crear compra */
     private static void crearCompra(String codigoCompra, Date fechaCompra, double totalCompra, String cedulaCliente, String cedulaEmpleado,Tienda tienda) {
         tienda.crearCompra(codigoCompra, fechaCompra, totalCompra, cedulaCliente, cedulaEmpleado);
+    }
+    /* Método para crear detalle de compra */
+    private static void crearDetalleCompra(int numeroDetalle, String productoComprado, int cantidadComprado, double valorUnidad, double valorTotal, Producto ProductoAsosiado){
+        tienda.crearDetalleCompra();
     }
 }

@@ -86,23 +86,18 @@ public class Compra {
     }
 
     public void crearDetalleCompra(int numeroDetalle, String productoComprado, int cantidadComprado, double valorUnidad, double valorTotal, Producto ProductoAsosiado) {
-        Producto producto = ownedByTienda.buscarProducto(productoAsociado);
-        LocalDate fechaConvertida;
-        if (producto!=null && (producto.getStockAlmacen()-cantidad)>0){
-            try {
-                int cantidadActual = producto.getStockAlmacen();
-                producto.setStockAlmacen(cantidadActual-cantidad);
-                fechaConvertida = LocalDate.parse(fechaCompra, formato);
-                this.detalleVenta = new DetalleVenta();
-                this.detalleVenta.setCantidad(cantidad);
-                this.detalleVenta.setFechaCompra(fechaConvertida);
-                this.detalleVenta.setProductoAsociado(producto);
-            } catch (DateTimeParseException e) {
-                JOptionPane.showMessageDialog(null, "Algo ha salido mal con la fecha, inténtelo nuevamente", "Error!", JOptionPane.ERROR_MESSAGE);
-            }
-        }else{
-            JOptionPane.showMessageDialog(null, "Revise e id del producto, este no fue encontrado o el stock no esta disponible");
+        Producto producto = ownedByTienda.obtenerProducto(ProductoAsosiado.getReferencia());
+        if (producto != null && (producto.getCantidadDisponible() - cantidadComprado) > 0){
+                int cantidadActual = producto.getCantidadDisponible();
+                producto.setCantidadDisponible(cantidadActual-cantidadComprado);
+                DetalleCompra detalleCompra = new DetalleCompra();
+                detalleCompra.setNumeroDetalle(numeroDetalle);
+                detalleCompra.setProductoComprado(productoComprado);
+                detalleCompra.setCantidadComprado(cantidadComprado);
+                detalleCompra.setValorUnidad(valorUnidad);
+                detalleCompra.setValorTotal(valorTotal);
+                detalleCompra.setProductoAsociado(productoAsociado);
+                detalleCompra.setProductoAsociado(producto);
         }
-
     }
 }

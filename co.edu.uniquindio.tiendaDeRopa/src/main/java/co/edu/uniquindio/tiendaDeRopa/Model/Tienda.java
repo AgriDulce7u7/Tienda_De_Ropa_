@@ -438,16 +438,6 @@ public class Tienda implements ITienda {
 
     @Override
     public boolean actualizarCompra(String codigoCompraActual, String codigoCompra, Date fechaCompra, double totalCompra, String cedulaCliente, String cedulaEmpleado) {
-//        Compra compraEncontrada = obtenerCompra(codigoCompraActual);
-//        if(compraEncontrada != null){
-//            compraEncontrada.setCodigoCompra(codigoCompra);
-//            compraEncontrada.setFechaCompra(fechaCompra);
-//            compraEncontrada.setTotalCompra(totalCompra);
-//
-//            return true;
-//        }else{
-//            return false;
-//        }
         Empleado empleadoAsociado;
         Cliente clienteAsociado;
 
@@ -465,7 +455,7 @@ public class Tienda implements ITienda {
                 compra.setTotalCompra(totalCompra);
                 compra.setClienteAsociado(clienteAsociado);
                 compra.setEmpleadoAsociado(empleadoAsociado);
-                compra.crearDetalleCompra(cantidad, fechaCompra, idProductoAsociado);
+                compra.crearDetalleCompra(numeroDetalle, productoComprado, cantidadComprado, valorUnidad, valorTotal, productoAsociado);
                 return true;
             }
         }else{
