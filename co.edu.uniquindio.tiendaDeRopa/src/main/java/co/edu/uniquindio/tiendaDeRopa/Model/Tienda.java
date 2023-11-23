@@ -332,15 +332,16 @@ public class Tienda implements ITienda {
             Empleado empleado = obtenerEmpleado(cedulaEmpleado);
             if (cliente == null || empleado == null){
                 return false;
+            }else{
+                Compra compra = new Compra();
+                compra.setCodigoCompra(codigoCompra);
+                compra.setFechaCompra(fechaCompra);
+                compra.setTotalCompra(totalCompra);
+                compra.setClienteAsociado(cliente);
+                compra.setEmpleadoAsociado(empleado);
+                getListaCompras().add(compra);
+                return true;
             }
-            Compra compra = new Compra();
-            compra.setCodigoCompra(codigoCompra);
-            compra.setFechaCompra(fechaCompra);
-            compra.setTotalCompra(totalCompra);
-            compra.setClienteAsociado(cliente);
-            compra.setEmpleadoAsociado(empleado);
-            getListaCompras().add(compra);
-            return true;
         }else {
             return false;
         }
