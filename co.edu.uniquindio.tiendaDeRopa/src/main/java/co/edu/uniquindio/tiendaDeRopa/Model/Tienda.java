@@ -78,7 +78,7 @@ public class Tienda implements ITienda {
     /* Método para crear un cliente */
     @Override
     public boolean crearCliente(String nombreCompleto, String cedula, Sexo sexo, long telefono, int prendasCompradas, Date fechaUltimaCompra, MetodoPago metodoPago, String codigoCompra) {
-        if (cedula.equalsIgnoreCase(cedula)) {
+        if (buscarClientes(cedula) == null){
             Cliente cliente = new Cliente();
             cliente.setNombreCompleto(nombreCompleto);
             cliente.setCedula(cedula);
@@ -88,8 +88,10 @@ public class Tienda implements ITienda {
             cliente.setFechaUltimaCompra(fechaUltimaCompra);
             cliente.setMetodoPago(metodoPago);
             getListaClientes().add(cliente);
+            return true;
+        }else{
+            return false;
         }
-        return true;
     }
 
     @Override
@@ -116,6 +118,7 @@ public class Tienda implements ITienda {
             clienteEncontrado.setPrendasCompradas(prendasCompradas);
             clienteEncontrado.setFechaUltimaCompra(fechaUltimaCompra);
             clienteEncontrado.setMetodoPago(metodoPago);
+            getListaClientes().add(clienteEncontrado);
 
             return true;
         }else{
@@ -148,9 +151,18 @@ public class Tienda implements ITienda {
         }
     }
 
+    public Cliente buscarClientes(String cedula) {
+        for (Cliente cliente : getListaClientes()) {
+            if (cliente.getCedula().equalsIgnoreCase(cedula)){
+                return cliente;
+            }
+        }
+        return null;
+    }
+
     @Override
     public boolean crearEmpleado(String nombreCompleto, String cedula, Sexo sexo, long telefono, String correo, double salario, TipoContrato tipoContrato, int horasTrabajo, String codigoCompra) {
-        if (cedula.equalsIgnoreCase(cedula)) {
+        if (buscarEmpleados(cedula) == null){
             Empleado empleado = new Empleado();
             empleado.setNombreCompleto(nombreCompleto);
             empleado.setCedula(cedula);
@@ -161,9 +173,10 @@ public class Tienda implements ITienda {
             empleado.setTipoContrato(tipoContrato);
             empleado.setHorasTrabajo(horasTrabajo);
             getListaEmpleados().add(empleado);
+            return true;
+        }else{
+            return false;
         }
-
-        return true;
     }
 
     @Override
@@ -191,6 +204,7 @@ public class Tienda implements ITienda {
             empleadoEncontrado.setSalario(salario);
             empleadoEncontrado.setTipoContrato(tipoContrato);
             empleadoEncontrado.setHorasTrabajo(horasTrabajo);
+            getListaEmpleados().add(empleadoEncontrado);
 
             return true;
         }else{
@@ -219,19 +233,32 @@ public class Tienda implements ITienda {
         }
     }
 
+    public Empleado buscarEmpleados(String cedula) {
+        for (Empleado empleado : getListaEmpleados()) {
+            if (empleado.getCedula().equalsIgnoreCase(cedula)){
+                return empleado;
+            }
+        }
+        return null;
+    }
+
     @Override
     public boolean crearProducto(String nombre, String referencia, TipoCliente tipoCliente, TipoProducto tipoProducto, Talla talla, Color color, double precio, int cantidadDisponible, int numeroDetalle) {
-        Producto producto = new Producto();
-        producto.setNombre(nombre);
-        producto.setReferencia(referencia);
-        producto.setTipoCliente(tipoCliente);
-        producto.setTipoProducto(tipoProducto);
-        producto.setTalla(talla);
-        producto.setColor(color);
-        producto.setPrecio(precio);
-        producto.setCantidadDisponible(cantidadDisponible);
-        getListaProductos().add(producto);
-        return true;
+        if (buscarProductos(referencia) == null) {
+            Producto producto = new Producto();
+            producto.setNombre(nombre);
+            producto.setReferencia(referencia);
+            producto.setTipoCliente(tipoCliente);
+            producto.setTipoProducto(tipoProducto);
+            producto.setTalla(talla);
+            producto.setColor(color);
+            producto.setPrecio(precio);
+            producto.setCantidadDisponible(cantidadDisponible);
+            getListaProductos().add(producto);
+            return true;
+        }else{
+            return false;
+        }
     }
 
     @Override
@@ -284,6 +311,15 @@ public class Tienda implements ITienda {
         }else{
             System.out.println("El producto no fue encontraddo.");
         }
+    }
+
+    public Producto buscarProductos(String referencia) {
+        for (Producto producto : getListaProductos()) {
+            if (producto.getReferencia().equalsIgnoreCase(referencia)){
+                return producto;
+            }
+        }
+        return null;
     }
 
     @Override

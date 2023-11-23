@@ -7,6 +7,13 @@ import co.edu.uniquindio.tiendaDeRopa.Model.Enumeracion.TipoProducto;
 import co.edu.uniquindio.tiendaDeRopa.Service.IProducto;
 
 public class Producto implements IProducto {
+//    chaqueta.setNombre("bomber");
+//        chaqueta.setReferencia("yui09");
+//        chaqueta.setTipoCliente(TipoCliente.HOMBRE);
+//        chaqueta.setTalla(Talla.XL);
+//        chaqueta.setColor(Color.AZUL);
+//        chaqueta.setPrecio(120000.0);
+//        chaqueta.setCantidadDisponible(14);
     private String nombre;
     private String referencia;
     private TipoCliente tipoCliente;
