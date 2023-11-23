@@ -15,10 +15,10 @@ import static co.edu.uniquindio.tiendaDeRopa.Util.CapturaDatosUtil.leerEntero;
 public class Main {
     public static void main(String[] args) {
         Tienda tienda = inicializarDatosPrueba();
-        Cliente cliente = tienda.obtenerCliente("1004830265");
         Producto producto1 = tienda.mostrarProducto("agh789");
-        //tienda.crearCompra("123f", new Date(23, 6, 21, 14, 0), 52000, "1004830265", "1520623205");
-
+        tienda.crearDetalleCompra(155, "Blusa", 3, 20000, 60000, "556", "Crop213");
+        Date fechaCompra = new Date(23, 1, 31, 17, 00);
+        Date fechaCompra1 = new Date(98, 9, 11, 11, 00);
 
         /* Funciones CRUD Cliente */
         //Create
@@ -62,27 +62,11 @@ public class Main {
 
         /* CRUD Compra */
         //Create
-        crearCompra("ret5", new Date(23, 1, 15, 9,0), 59000, "91850274", "1010660485", tienda);
-
-        //Read
-        tienda.obtenerCompra("");
+        crearCompra("ret6", fechaCompra, 59000, "91850274", "1010660485", tienda);
         //Update
-
+        actualizarCompra("jkñ8", "reyh8", fechaCompra1, 59000, "91850274", "1010660485", tienda);
         //Delete
-
-
-        /* CRUD DetalleCompra*/
-        //Create
-        crearDetalleCompra(155, "Blusa", 3, 20000, 60000, "556", "Crop213");
-
-        //Read
-
-        //Update
-
-        //Delete
-
-
-
+        eliminarCompra(tienda, "e");
 
         gestionarOpcionesAplicacionPrestamoUQ(tienda);
     }
@@ -106,11 +90,6 @@ public class Main {
                     gestionarOpcionesCompra(tienda);
                     break;
                 case 5:
-                    //gestionarOpcionesDetalleCompra(tienda);
-                    break;
-                case 6:
-                    break;
-                case 7:
                     int valorRespuesta = mostrarMensajeAlerta("Esta seguro de desea salir de la aplicación");
                     if(valorRespuesta == 1){
                         opcion = 0;
@@ -120,7 +99,7 @@ public class Main {
                     mostrarMensaje("La opción seleccionada no es una opción validad");
                     break;
             }
-        }while(opcion!=7);
+        }while(opcion!=5);
     }
 
     private static void gestionarOpcionesCliente(Tienda tienda) {
@@ -255,10 +234,10 @@ public class Main {
                     actualizarCompra(tienda);
                     break;
                 case 3:
-                    //eliminarCompra(tienda);
+                    eliminarCompra(tienda);
                     break;
                 case 4:
-                    //buscarCompra(tienda);
+                    buscarCompra(tienda);
                     break;
                 case 5:
                     int valorRespuesta = mostrarMensajeAlerta("Esta seguro de desea salir de la aplicación.");
@@ -279,9 +258,7 @@ public class Main {
         System.out.println("2 - Gestionar empleados");
         System.out.println("3 - Gestionar productos");
         System.out.println("4 - Realizar compra de productos");
-        System.out.println("5 - Devolver compra de productos");
-        System.out.println("6 - Gestionar otros requisitos");
-        System.out.println("7 - Salir");
+        System.out.println("5 - Salir");
     }
 
     private static void mostrarMenuCrudCliente() {
@@ -499,13 +476,7 @@ public class Main {
         double totalCompra = leerDoubleConsola("Ingrese el total de la compra: ");
         String cedulaEmpleadoAsociado = leerStringConsola("Ingrese la cédula del empleado que realizo la compra: ");
         String cedulaClienteAsociado = leerStringConsola("Ingrese la cédula del cliente que hizo la compra: ");
-        int numeroDetalle = leerEntero("Ingrese el número del detalle: ");
-        String productoComprado = leerStringConsola("Ingrese el producto comprado: ");
-        int cantidadComprado = leerEntero("Ingrese la cantidad del producto comprado: ");
-        double valorUnidad = leerDoubleConsola("Ingrese el valor por unidad: ");
-        double valorTotal = leerDoubleConsola("Ingrese el valor total de la compra: ");
-        String referenciaProducto = leerStringConsola("Ingrese la refencia del producto: ");
-        boolean flagCreado = tienda.crearCompra(codigoCompra, fechaCompra, totalCompra, cedulaEmpleadoAsociado, cedulaClienteAsociado, numeroDetalle, productoComprado, cantidadComprado, valorUnidad, valorTotal, referenciaProducto);
+        boolean flagCreado = tienda.crearCompra(codigoCompra, fechaCompra, totalCompra, cedulaEmpleadoAsociado, cedulaClienteAsociado);
         if(flagCreado == true){
             System.out.println("La compra fue creada con éxito.");
         }else{
@@ -520,18 +491,22 @@ public class Main {
         double totalCompra = leerDoubleConsola("Ingrese el total de la compra: ");
         String cedulaEmpleadoAsociado = leerStringConsola("Ingrese la cédula del empleado que realizo la compra: ");
         String cedulaClienteAsociado = leerStringConsola("Ingrese la cédula del cliente que hizo la compra: ");
-        int numeroDetalle = leerEntero("Ingrese el número del detalle: ");
-        String productoComprado = leerStringConsola("Ingrese el producto comprado: ");
-        int cantidadComprado = leerEntero("Ingrese la cantidad del producto comprado: ");
-        double valorUnidad = leerDoubleConsola("Ingrese el valor por unidad: ");
-        double valorTotal = leerDoubleConsola("Ingrese el valor total de la compra: ");
-        String referenciaProducto = leerStringConsola("Ingrese la refencia del producto: ");
-        boolean flagCreado = tienda.actualizarCompra(codigoCompraActual, codigoCompra, fechaCompra, totalCompra, cedulaEmpleadoAsociado, cedulaClienteAsociado, numeroDetalle, productoComprado, cantidadComprado, valorUnidad, valorTotal, referenciaProducto);
+        boolean flagCreado = tienda.actualizarCompra(codigoCompraActual, codigoCompra, fechaCompra, totalCompra, cedulaEmpleadoAsociado, cedulaClienteAsociado);
         if(flagCreado == true){
             System.out.println("La compra fue actualizada con éxito.");
         }else{
             System.out.println("La compra no pudo ser actualizada.");
         }
+    }
+
+    private static void eliminarCompra(Tienda tienda){
+        String codigoCompra = leerStringConsola("Ingrese el código de la compra: ");
+        tienda.eliminarCompra(codigoCompra);
+    }
+
+    private static void buscarCompra(Tienda tienda){
+        String codigoCompra = leerStringConsola("Ingrese el código de la compra: ");
+        tienda.buscarCompra(codigoCompra);
     }
 
     /* Método para inializar  los datos de la tienda */
@@ -670,7 +645,17 @@ public class Main {
     }
 
     /* Método para crear compra */
-    private static void crearCompra(String codigoCompra, Date fechaCompra, double totalCompra, String cedulaCliente, String cedulaEmpleado,Tienda tienda) {
+    private static void crearCompra(String codigoCompra, Date fechaCompra, double totalCompra, String cedulaCliente, String cedulaEmpleado, Tienda tienda) {
         tienda.crearCompra(codigoCompra, fechaCompra, totalCompra, cedulaCliente, cedulaEmpleado);
+    }
+
+    /* Método para actualizar compra */
+    private static void actualizarCompra(String codigoCompraActual, String codigoCompra, Date fechaCompra, double totalCompra, String cedulaCliente, String cedulaEmpleado, Tienda tienda){
+        tienda.actualizarCompra(codigoCompraActual, codigoCompra, fechaCompra, totalCompra, cedulaCliente, cedulaEmpleado);
+    }
+
+    /* Método para eliminar una compra */
+    private static void eliminarCompra(Tienda tienda, String codigoCompra){
+        tienda.eliminarCompra(codigoCompra);
     }
 }

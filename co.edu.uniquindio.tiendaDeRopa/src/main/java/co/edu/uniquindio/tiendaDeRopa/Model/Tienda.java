@@ -401,7 +401,7 @@ public class Tienda implements ITienda {
     }
 
     @Override
-    public boolean crearCompra(String codigoCompraActual, String codigoCompra, Date fechaCompra, double totalCompra, String cedulaCliente, String cedulaEmpleado, int numeroDetalle, String productoComprado, int cantidadComprado, double valorUnidad, double valorTotal, String referenciaProducto) {
+    public boolean crearCompra(String codigoCompra, Date fechaCompra, double totalCompra, String cedulaCliente, String cedulaEmpleado) {
         if (buscarCompra(codigoCompra) == null) {
             Cliente cliente = obtenerCliente(cedulaCliente);
             Empleado empleado = obtenerEmpleado(cedulaEmpleado);
@@ -414,7 +414,6 @@ public class Tienda implements ITienda {
                 compra.setTotalCompra(totalCompra);
                 compra.setClienteAsociado(cliente);
                 compra.setEmpleadoAsociado(empleado);
-                compra.crearDetalleCompra(numeroDetalle, productoComprado, cantidadComprado, valorUnidad, valorTotal, referenciaProducto);
                 getListaCompras().add(compra);
                 return true;
             }
@@ -437,34 +436,41 @@ public class Tienda implements ITienda {
     }
 
     @Override
-    public boolean actualizarCompra(String codigoCompraActual, String codigoCompra, Date fechaCompra, double totalCompra, String cedulaCliente, String cedulaEmpleado, int numeroDetalle, String productoComprado, int cantidadComprado, double valorUnidad, double valorTotal, String referenciaProducto) {
-        Empleado empleadoAsociado;
-        Cliente clienteAsociado;
-
-        if (obtenerCompra(codigoCompra) == null || codigoCompra == codigoCompraActual){
-            empleadoAsociado = obtenerEmpleado(cedulaEmpleado);
-            clienteAsociado = obtenerCliente(cedulaCliente);
-
-            if (empleadoAsociado == null || clienteAsociado == null){
-                return false;
-
-            }else{
-                Compra compra = obtenerCompra(codigoCompra);
-                compra.setCodigoCompra(codigoCompra);
-                compra.setFechaCompra(fechaCompra);
-                compra.setTotalCompra(totalCompra);
-                compra.setClienteAsociado(clienteAsociado);
-                compra.setEmpleadoAsociado(empleadoAsociado);
-                compra.crearDetalleCompra(numeroDetalle, productoComprado, cantidadComprado, valorUnidad, valorTotal, referenciaProducto);
-                return true;
-            }
-        }else{
-            return false;
-        }
+    public boolean actualizarCompra(String codigoCompraActual, String codigoCompra, Date fechaCompra, double totalCompra, String cedulaCliente, String cedulaEmpleado) {
+//        Empleado empleadoAsociado;
+//        Cliente clienteAsociado;
+//
+//        if (obtenerCompra(codigoCompra) == null || codigoCompra == codigoCompraActual){
+//            empleadoAsociado = obtenerEmpleado(cedulaEmpleado);
+//            clienteAsociado = obtenerCliente(cedulaCliente);
+//
+//            if (empleadoAsociado == null || clienteAsociado == null){
+//                return false;
+//
+//            }else{
+//                Compra compra = obtenerCompra(codigoCompra);
+//                compra.setCodigoCompra(codigoCompra);
+//                compra.setFechaCompra(fechaCompra);
+//                compra.setTotalCompra(totalCompra);
+//                compra.setClienteAsociado(clienteAsociado);
+//                compra.setEmpleadoAsociado(empleadoAsociado);
+//                return true;
+//            }
+//        }else{
+//            return false;
+//        }
+        return false;
     }
 
     @Override
     public void eliminarCompra(String codigoCompra) {
+        Compra compraEncontrada = obtenerCompra(codigoCompra);
+        if (compraEncontrada != null){
+            System.out.println("La compra fue eliminada.");
+            getListaProductos().remove(compraEncontrada);
+        }else{
+            System.out.println("La compra no pudo ser eliminada.");
+        }
     }
 
     public Compra buscarCompra(String codigoCompra){
@@ -496,29 +502,6 @@ public class Tienda implements ITienda {
 
         return true;
 
-    }
-
-    @Override
-    public DetalleCompra obtenerDetalleCompra(int numeroDetalle) {
-        DetalleCompra detalleCompraEncontrado = null;
-        for (DetalleCompra detalleCompra : getListaDetalleCompra()) {
-            if (detalleCompra.getNumeroDetalle() == numeroDetalle){
-                detalleCompraEncontrado = detalleCompra;
-                break;
-            }
-        }
-
-        return detalleCompraEncontrado;
-    }
-
-
-    @Override
-    public boolean actualizarDetalleCompra(int numeroDetalle, String productoComprado, int cantidadCompra, double valorUnidad, double valorTotal, String codigoCompra, String referencia) {
-        return false;
-    }
-
-    @Override
-    public void eliminarDetalleCompra(int numeroDetalle) {
     }
 
     /* Método para mostrar una prenda por la referencia */
@@ -561,6 +544,22 @@ public class Tienda implements ITienda {
     public void mostrarInformacionProductos(){
         for (Producto producto : getListaProductos()) {
             System.out.println(producto.toString());
+        }
+    }
+
+    public void crearDetalleCompra(Compra compra, Producto producto, int numeroDetalle, String productoComprado, int cantidadComprado, double valorUnidad, double valorTotal, String referenciaProducto) {
+        if (producto != null && (producto.getCantidadDisponible() - cantidadComprado) > 0){
+            int cantidadActual = producto.getCantidadDisponible();
+            producto.setCantidadDisponible(cantidadActual-cantidadComprado);
+            DetalleCompra detalleCompra = new DetalleCompra();
+            detalleCompra.setNumeroDetalle(numeroDetalle);
+            detalleCompra.setProductoComprado(productoComprado);
+            detalleCompra.setCantidadComprado(cantidadComprado);
+            detalleCompra.setValorUnidad(valorUnidad);
+            detalleCompra.setValorTotal(valorTotal);
+            detalleCompra.setProductoAsociado(producto);
+            compra.getListaDetalleCompra().add(detalleCompra);
+            detalleCompra.setOwnedByCompra(compra);
         }
     }
 }

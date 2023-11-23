@@ -77,13 +77,7 @@ public interface ITienda {
                         Date fechaCompra,
                         double totalCompra,
                         String cedulaCliente,
-                        String cedulaEmpleado,
-                        int numeroDetalle,
-                        String productoComprado,
-                        int cantidadComprado,
-                        double valorUnidad,
-                        double valorTotal,
-                        String referenciaProducto);
+                        String cedulaEmpleado);
 
     Compra obtenerCompra(String codigoCompra);
     boolean actualizarCompra(String codigoCompraActual,
@@ -91,13 +85,7 @@ public interface ITienda {
                              Date fechaCompra,
                              double totalCompra,
                              String cedulaCliente,
-                             String cedulaEmpleado,
-                             int numeroDetalle,
-                             String productoComprado,
-                             int cantidadComprado,
-                             double valorUnidad,
-                             double valorTotal,
-                             String referenciaProducto);
+                             String cedulaEmpleado);
     void eliminarCompra(String codigoCompra);
 
     /* CRUD Detalle Compra */
@@ -108,15 +96,6 @@ public interface ITienda {
                                double valorTotal,
                                String codigoCompra,
                                String referencia);
-    DetalleCompra obtenerDetalleCompra(int numeroDetalle);
-    boolean actualizarDetalleCompra(int numeroDetalle,
-                                    String productoComprado,
-                                    int cantidadCompra,
-                                    double valorUnidad,
-                                    double valorTotal,
-                                    String codigoCompra,
-                                    String referencia);
-    void eliminarDetalleCompra(int numeroDetalle);
 
     Producto mostrarProducto(String referencia);
 }

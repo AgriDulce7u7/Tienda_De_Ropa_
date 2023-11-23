@@ -6,7 +6,7 @@ public class DetalleCompra {
     private  int cantidadComprado;
     private double valorUnidad;
     private double valorTotal;
-    private Producto productoAsociado;
+    public Producto productoAsociado;
     Compra ownedByCompra;
 
     /* Constructor */

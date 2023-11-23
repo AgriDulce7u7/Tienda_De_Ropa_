@@ -8,8 +8,8 @@ public class Compra {
     private String codigoCompra;
     private Date fechaCompra;
     private double totalCompra;
-    private Empleado empleadoAsociado;
-    private Cliente clienteAsociado;
+    public Empleado empleadoAsociado;
+    public Cliente clienteAsociado;
 
     List<DetalleCompra> listaDetalleCompra = new ArrayList<>();
 
@@ -85,18 +85,4 @@ public class Compra {
                 '}';
     }
 
-    public void crearDetalleCompra(int numeroDetalle, String productoComprado, int cantidadComprado, double valorUnidad, double valorTotal, String referenciaProducto) {
-        Producto producto = ownedByTienda.obtenerProducto(referenciaProducto);
-        if (producto != null && (producto.getCantidadDisponible() - cantidadComprado) > 0){
-                int cantidadActual = producto.getCantidadDisponible();
-                producto.setCantidadDisponible(cantidadActual-cantidadComprado);
-                DetalleCompra detalleCompra = new DetalleCompra();
-                detalleCompra.setNumeroDetalle(numeroDetalle);
-                detalleCompra.setProductoComprado(productoComprado);
-                detalleCompra.setCantidadComprado(cantidadComprado);
-                detalleCompra.setValorUnidad(valorUnidad);
-                detalleCompra.setValorTotal(valorTotal);
-                detalleCompra.setProductoAsociado(producto);
-        }
-    }
 }

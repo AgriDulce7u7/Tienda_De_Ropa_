@@ -56,4 +56,8 @@ public class TiendaTest {
         assertFalse(tienda.buscarProducto("Crop213"));
     }
 
+    @Test
+    public void testTransaccionCompra() {
+        assertEquals(30745, tienda.obtenerProducto("Crop213").calcularPrecio());
+    }
 }
