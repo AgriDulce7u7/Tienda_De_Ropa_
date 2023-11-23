@@ -184,8 +184,12 @@ public class Main {
                     buscarEmpleado(tienda);
                     break;
                 case 6:
+                    obtenerEmpleadoMayorSalario(tienda);
                     break;
                 case 7:
+                    obtenerEmpleadoMayorHorasTrabajo(tienda);
+                    break;
+                case 8:
                     int valorRespuesta = mostrarMensajeAlerta("Esta seguro de desea salir de la aplicación.");
                     if(valorRespuesta == 1){
                         opcion = 0;
@@ -195,7 +199,7 @@ public class Main {
                     mostrarMensaje("La opción seleccionada no es una opción valida.");
                     break;
             }
-        }while (opcion != 7);
+        }while (opcion != 8);
     }
 
     private static void gestionarOpcionesProducto(Tienda tienda) {
@@ -293,7 +297,10 @@ public class Main {
         System.out.println("3 - Actualizar empleado");
         System.out.println("4 - Eliminar empleado");
         System.out.println("5 - Buscar empleado");
-        System.out.println("6 - Salir");
+        System.out.println("6 - Obtener el empleado con mayor salario: ");
+        System.out.println("7 - Obtener el empleado con más horas de trabajo: ");
+        System.out.println("8 - Salir");
+
     }
 
     private static void mostrarMenuCrudProducto() {
@@ -412,6 +419,14 @@ public class Main {
     private static void buscarEmpleado(Tienda tienda) {
         String cedula = leerStringConsola("Ingrese la cédula del empleado: ");
         tienda.buscarEmpleado(cedula);
+    }
+
+    private static void obtenerEmpleadoMayorSalario(Tienda tienda){
+        tienda.obtenerEmpleadoMayorSalario();
+    }
+
+    private static void obtenerEmpleadoMayorHorasTrabajo(Tienda tienda){
+        tienda.obtenerEmpleadoMayorHorasTrabajo();
     }
 
     private static void crearProducto(Tienda tienda) {

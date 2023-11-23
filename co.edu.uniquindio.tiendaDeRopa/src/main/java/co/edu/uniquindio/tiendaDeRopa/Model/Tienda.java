@@ -269,6 +269,30 @@ public class Tienda implements ITienda {
         return null;
     }
 
+    public double obtenerEmpleadoMayorSalario(){
+        double empleadoMayorSalario = 0.0;
+        for (Empleado empleado : getListaEmpleados()) {
+            if (empleado.getSalario() > empleadoMayorSalario){
+                empleadoMayorSalario = empleado.getSalario();
+            }
+            System.out.println("El empleado con más salario es: " + empleadoMayorSalario);
+            break;
+        }
+        return empleadoMayorSalario;
+    }
+
+    public int obtenerEmpleadoMayorHorasTrabajo(){
+        int empleadoMayorHorasTrabajo = 0;
+        for (Empleado empleado : getListaEmpleados()) {
+            if (empleado.getHorasTrabajo() > empleadoMayorHorasTrabajo){
+                empleadoMayorHorasTrabajo = empleado.getHorasTrabajo();
+            }
+            System.out.println("El empleado con más horas de trabajo son: "+ empleadoMayorHorasTrabajo);
+            break;
+        }
+        return empleadoMayorHorasTrabajo;
+    }
+
     @Override
     public boolean crearProducto(String nombre, String referencia, TipoCliente tipoCliente, TipoProducto tipoProducto, Talla talla, Color color, double precio, int cantidadDisponible, int numeroDetalle) {
         if (buscarProductos(referencia) == null) {
