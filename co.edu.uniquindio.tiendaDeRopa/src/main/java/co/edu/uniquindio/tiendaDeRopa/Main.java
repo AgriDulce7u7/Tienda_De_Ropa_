@@ -225,6 +225,12 @@ public class Main {
                     buscarProducto(tienda);
                     break;
                 case 6:
+                    obtenerCantidadProducto(tienda);
+                    break;
+                case 7:
+                    obtenerProductoMasCostoso(tienda);
+                    break;
+                case 8:
                     int valorRespuesta = mostrarMensajeAlerta("Esta seguro de desea salir de la aplicación.");
                     if(valorRespuesta == 1){
                         opcion = 0;
@@ -234,7 +240,7 @@ public class Main {
                     mostrarMensaje("La opción seleccionada no es una opción valida.");
                     break;
             }
-        }while (opcion != 6);
+        }while (opcion != 8);
     }
 
     private static void gestionarOpcionesCompra(Tienda tienda) {
@@ -286,8 +292,8 @@ public class Main {
         System.out.println("3 - Actualizar cliente");
         System.out.println("4 - Eliminar cliente");
         System.out.println("5 - Buscar cliente");
-        System.out.println("6 - Obtener el cliente con más prendas compradas: ");
-        System.out.println("7 - Obtener el cliente con más compras: ");
+        System.out.println("6 - Obtener el cliente con más prendas compradas");
+        System.out.println("7 - Obtener el cliente con más compras");
         System.out.println("8 - Salir");
     }
 
@@ -298,8 +304,8 @@ public class Main {
         System.out.println("3 - Actualizar empleado");
         System.out.println("4 - Eliminar empleado");
         System.out.println("5 - Buscar empleado");
-        System.out.println("6 - Obtener el empleado con mayor salario: ");
-        System.out.println("7 - Obtener el empleado con más horas de trabajo: ");
+        System.out.println("6 - Obtener el empleado con mayor salario");
+        System.out.println("7 - Obtener el empleado con más horas de trabajo");
         System.out.println("8 - Salir");
 
     }
@@ -311,6 +317,8 @@ public class Main {
         System.out.println("3 - Actualizar producto");
         System.out.println("4 - Eliminar producto");
         System.out.println("5 - Buscar producto");
+        System.out.println("7 - Obtener el producto con más stock");
+        System.out.println("8 - Obtener el producto más costoso");
         System.out.println("6 - Salir");
     }
 
@@ -476,6 +484,14 @@ public class Main {
     private static void buscarProducto(Tienda tienda) {
         String referencia = leerStringConsola("Ingrese la referencia del producto: ");
         tienda.buscarProducto(referencia);
+    }
+
+    private static void obtenerCantidadProducto (Tienda tienda){
+        tienda.obtenerCantidadProducto();
+    }
+
+    private static void obtenerProductoMasCostoso(Tienda tienda){
+        tienda.obtenerProductoMasCostoso();
     }
 
     private static void crearCompra(Tienda tienda) {

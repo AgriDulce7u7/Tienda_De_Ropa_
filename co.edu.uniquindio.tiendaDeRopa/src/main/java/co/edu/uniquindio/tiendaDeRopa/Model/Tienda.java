@@ -376,6 +376,30 @@ public class Tienda implements ITienda {
         return null;
     }
 
+    public int obtenerCantidadProducto(){
+        int cantidadProducto = 0;
+        for (Producto producto : getListaProductos()) {
+            if (producto.getCantidadDisponible() > cantidadProducto){
+                cantidadProducto = producto.getCantidadDisponible();
+            }
+            System.out.println("El producto con más stock disponible tiene un total de: " + cantidadProducto + " prendas.");
+            break;
+        }
+        return cantidadProducto;
+    }
+
+    public double obtenerProductoMasCostoso(){
+        double productoMasCostoso = 0.0;
+        for (Producto producto : getListaProductos()) {
+            if(producto.getPrecio() > productoMasCostoso){
+                productoMasCostoso = producto.getPrecio();
+            }
+            System.out.println("El producto más costoso tiene un precio de: ");
+            break;
+        }
+        return productoMasCostoso;
+    }
+
     @Override
     public boolean crearCompra(String codigoCompra, Date fechaCompra, double totalCompra, String cedulaCliente, String cedulaEmpleado) {
         if (buscarCompra(codigoCompra) == null) {

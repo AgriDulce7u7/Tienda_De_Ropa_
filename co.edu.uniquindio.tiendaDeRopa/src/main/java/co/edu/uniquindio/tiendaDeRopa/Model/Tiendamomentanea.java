@@ -512,22 +512,8 @@ public class Tiendamomentanea implements ITienda {
 
     /**
      * Metodos Main*/
-    private static void obtenerCantidadProducto (Tienda tienda){
-        tienda.obtenerCantidadProducto();
-    }
 
-    private static void 
     /**
      * Metodos Tienda */
-    public int obtenerCantidadProducto(){
-        int cantidadProducto = 0;
-        for (Producto producto : getListaProductos()) {
-            if (producto.getCantidadDisponible() > cantidadProducto){
-                cantidadProducto = producto.getCantidadDisponible();
-            }
-            System.out.println("El producto con más stock disponible es: " + cantidadProducto);
-            break;
-        }
-        return cantidadProducto;
-    }
+   
 }
