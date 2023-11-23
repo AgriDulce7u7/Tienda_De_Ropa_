@@ -6,7 +6,7 @@ import co.edu.uniquindio.tiendaDeRopa.Model.Enumeracion.TipoCliente;
 import co.edu.uniquindio.tiendaDeRopa.Model.Enumeracion.TipoProducto;
 import co.edu.uniquindio.tiendaDeRopa.Service.IProducto;
 
-public abstract class Producto implements IProducto {
+public class Producto implements IProducto {
     private String nombre;
     private String referencia;
     private TipoCliente tipoCliente;
@@ -115,9 +115,8 @@ public abstract class Producto implements IProducto {
         double precioFinal = 0.0;
         if (getTipoProducto() == TipoProducto.IMPORTADO) {
             precioFinal = precioBase + (precioBase * (IMPUESTO + IMPUESTO_ADICIONAL));
-
         }
-        else if (getTipoProducto() == TipoProducto.NACIONAL){
+        if (getTipoProducto() == TipoProducto.NACIONAL){
             precioFinal = precioBase + (precioBase * IMPUESTO);
         }
         return precioFinal;

@@ -1,6 +1,7 @@
 package co.edu.uniquindio.tiendaDeRopa.Model;
 
 public class DetalleCompra {
+    private int numeroDetalle;
     private String productoComprado;
     private  int cantidadComprado;
     private double valorUnidad;
@@ -12,6 +13,15 @@ public class DetalleCompra {
     }
 
     /* Getters and Setters */
+
+    public int getNumeroDetalle() {
+        return numeroDetalle;
+    }
+
+    public void setNumeroDetalle(int numeroDetalle) {
+        this.numeroDetalle = numeroDetalle;
+    }
+
     public String getProductoComprado() {
         return productoComprado;
     }

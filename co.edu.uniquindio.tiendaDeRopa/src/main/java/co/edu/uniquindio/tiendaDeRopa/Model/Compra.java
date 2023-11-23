@@ -8,6 +8,8 @@ public class Compra {
     private String codigoCompra;
     private Date fechaCompra;
     private double totalCompra;
+    private Empleado empleadoAsociado;
+    private Cliente clienteAsociado;
 
     List<DetalleCompra> listaDetalleCompra = new ArrayList<>();
 
@@ -40,6 +42,22 @@ public class Compra {
 
     public void setTotalCompra(double totalCompra) {
         this.totalCompra = totalCompra;
+    }
+
+    public Empleado getEmpleadoAsociado() {
+        return empleadoAsociado;
+    }
+
+    public void setEmpleadoAsociado(Empleado empleadoAsociado) {
+        this.empleadoAsociado = empleadoAsociado;
+    }
+
+    public Cliente getClienteAsociado() {
+        return clienteAsociado;
+    }
+
+    public void setClienteAsociado(Cliente clienteAsociado) {
+        this.clienteAsociado = clienteAsociado;
     }
 
     public List<DetalleCompra> getListaDetalleCompra() {

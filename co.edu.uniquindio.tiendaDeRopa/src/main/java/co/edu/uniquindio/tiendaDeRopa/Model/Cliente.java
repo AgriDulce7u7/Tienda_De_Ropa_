@@ -3,9 +3,11 @@ package co.edu.uniquindio.tiendaDeRopa.Model;
 import co.edu.uniquindio.tiendaDeRopa.Model.Enumeracion.MetodoPago;
 import co.edu.uniquindio.tiendaDeRopa.Model.Enumeracion.Sexo;
 
+import java.util.Date;
+
 public class Cliente extends Persona{
     private int prendasCompradas;
-    private String fechaUltimaCompra;
+    private Date fechaUltimaCompra;
     private MetodoPago metodoPago;
 
     Tienda ownedByTienda;
@@ -23,11 +25,11 @@ public class Cliente extends Persona{
         this.prendasCompradas = prendasCompradas;
     }
 
-    public String getFechaUltimaCompra() {
+    public Date getFechaUltimaCompra() {
         return fechaUltimaCompra;
     }
 
-    public void setFechaUltimaCompra(String fechaUltimaCompra) {
+    public void setFechaUltimaCompra(Date fechaUltimaCompra) {
         this.fechaUltimaCompra = fechaUltimaCompra;
     }
 

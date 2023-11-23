@@ -3,7 +3,6 @@ package co.edu.uniquindio.tiendaDeRopa.Model;
 import co.edu.uniquindio.tiendaDeRopa.Model.Enumeracion.TipoBlusa;
 
 public class Blusa extends Producto{
-
     private TipoBlusa tipoBlusa;
     private final double DESCUENTO = 0.15;
 
@@ -11,7 +10,7 @@ public class Blusa extends Producto{
     public Blusa() {
     }
 
-    /* Getters and setters*/
+    /* Getters and setters */
     public TipoBlusa getTipoBlusa() {
         return tipoBlusa;
     }
