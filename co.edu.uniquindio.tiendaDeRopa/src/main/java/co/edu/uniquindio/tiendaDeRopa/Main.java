@@ -184,6 +184,8 @@ public class Main {
                     buscarEmpleado(tienda);
                     break;
                 case 6:
+                    break;
+                case 7:
                     int valorRespuesta = mostrarMensajeAlerta("Esta seguro de desea salir de la aplicación.");
                     if(valorRespuesta == 1){
                         opcion = 0;
@@ -193,7 +195,7 @@ public class Main {
                     mostrarMensaje("La opción seleccionada no es una opción valida.");
                     break;
             }
-        }while (opcion != 6);
+        }while (opcion != 7);
     }
 
     private static void gestionarOpcionesProducto(Tienda tienda) {
