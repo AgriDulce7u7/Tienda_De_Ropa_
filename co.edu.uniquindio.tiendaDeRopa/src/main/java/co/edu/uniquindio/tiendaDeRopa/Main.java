@@ -499,7 +499,13 @@ public class Main {
         double totalCompra = leerDoubleConsola("Ingrese el total de la compra: ");
         String cedulaEmpleadoAsociado = leerStringConsola("Ingrese la cédula del empleado que realizo la compra: ");
         String cedulaClienteAsociado = leerStringConsola("Ingrese la cédula del cliente que hizo la compra: ");
-        boolean flagCreado = tienda.crearCompra(codigoCompra, fechaCompra, totalCompra, cedulaEmpleadoAsociado, cedulaClienteAsociado);
+        int numeroDetalle = leerEntero("Ingrese el número del detalle: ");
+        String productoComprado = leerStringConsola("Ingrese el producto comprado: ");
+        int cantidadComprado = leerEntero("Ingrese la cantidad del producto comprado: ");
+        double valorUnidad = leerDoubleConsola("Ingrese el valor por unidad: ");
+        double valorTotal = leerDoubleConsola("Ingrese el valor total de la compra: ");
+        String referenciaProducto = leerStringConsola("Ingrese la refencia del producto: ");
+        boolean flagCreado = tienda.crearCompra(codigoCompra, fechaCompra, totalCompra, cedulaEmpleadoAsociado, cedulaClienteAsociado, numeroDetalle, productoComprado, cantidadComprado, valorUnidad, valorTotal, referenciaProducto);
         if(flagCreado == true){
             System.out.println("La compra fue creada con éxito.");
         }else{
@@ -514,7 +520,13 @@ public class Main {
         double totalCompra = leerDoubleConsola("Ingrese el total de la compra: ");
         String cedulaEmpleadoAsociado = leerStringConsola("Ingrese la cédula del empleado que realizo la compra: ");
         String cedulaClienteAsociado = leerStringConsola("Ingrese la cédula del cliente que hizo la compra: ");
-        boolean flagCreado = tienda.actualizarCompra(codigoCompraActual, codigoCompra, fechaCompra, totalCompra, cedulaEmpleadoAsociado, cedulaClienteAsociado);
+        int numeroDetalle = leerEntero("Ingrese el número del detalle: ");
+        String productoComprado = leerStringConsola("Ingrese el producto comprado: ");
+        int cantidadComprado = leerEntero("Ingrese la cantidad del producto comprado: ");
+        double valorUnidad = leerDoubleConsola("Ingrese el valor por unidad: ");
+        double valorTotal = leerDoubleConsola("Ingrese el valor total de la compra: ");
+        String referenciaProducto = leerStringConsola("Ingrese la refencia del producto: ");
+        boolean flagCreado = tienda.actualizarCompra(codigoCompraActual, codigoCompra, fechaCompra, totalCompra, cedulaEmpleadoAsociado, cedulaClienteAsociado, numeroDetalle, productoComprado, cantidadComprado, valorUnidad, valorTotal, referenciaProducto);
         if(flagCreado == true){
             System.out.println("La compra fue actualizada con éxito.");
         }else{
@@ -660,9 +672,5 @@ public class Main {
     /* Método para crear compra */
     private static void crearCompra(String codigoCompra, Date fechaCompra, double totalCompra, String cedulaCliente, String cedulaEmpleado,Tienda tienda) {
         tienda.crearCompra(codigoCompra, fechaCompra, totalCompra, cedulaCliente, cedulaEmpleado);
-    }
-    /* Método para crear detalle de compra */
-    private static void crearDetalleCompra(int numeroDetalle, String productoComprado, int cantidadComprado, double valorUnidad, double valorTotal, Producto ProductoAsosiado){
-        tienda.crearDetalleCompra();
     }
 }

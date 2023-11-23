@@ -401,7 +401,7 @@ public class Tienda implements ITienda {
     }
 
     @Override
-    public boolean crearCompra(String codigoCompra, Date fechaCompra, double totalCompra, String cedulaCliente, String cedulaEmpleado) {
+    public boolean crearCompra(String codigoCompraActual, String codigoCompra, Date fechaCompra, double totalCompra, String cedulaCliente, String cedulaEmpleado, int numeroDetalle, String productoComprado, int cantidadComprado, double valorUnidad, double valorTotal, String referenciaProducto) {
         if (buscarCompra(codigoCompra) == null) {
             Cliente cliente = obtenerCliente(cedulaCliente);
             Empleado empleado = obtenerEmpleado(cedulaEmpleado);
@@ -414,7 +414,7 @@ public class Tienda implements ITienda {
                 compra.setTotalCompra(totalCompra);
                 compra.setClienteAsociado(cliente);
                 compra.setEmpleadoAsociado(empleado);
-                compra.crearDetalleCompra();
+                compra.crearDetalleCompra(numeroDetalle, productoComprado, cantidadComprado, valorUnidad, valorTotal, referenciaProducto);
                 getListaCompras().add(compra);
                 return true;
             }
@@ -437,7 +437,7 @@ public class Tienda implements ITienda {
     }
 
     @Override
-    public boolean actualizarCompra(String codigoCompraActual, String codigoCompra, Date fechaCompra, double totalCompra, String cedulaCliente, String cedulaEmpleado) {
+    public boolean actualizarCompra(String codigoCompraActual, String codigoCompra, Date fechaCompra, double totalCompra, String cedulaCliente, String cedulaEmpleado, int numeroDetalle, String productoComprado, int cantidadComprado, double valorUnidad, double valorTotal, String referenciaProducto) {
         Empleado empleadoAsociado;
         Cliente clienteAsociado;
 
@@ -455,7 +455,7 @@ public class Tienda implements ITienda {
                 compra.setTotalCompra(totalCompra);
                 compra.setClienteAsociado(clienteAsociado);
                 compra.setEmpleadoAsociado(empleadoAsociado);
-                compra.crearDetalleCompra(numeroDetalle, productoComprado, cantidadComprado, valorUnidad, valorTotal, productoAsociado);
+                compra.crearDetalleCompra(numeroDetalle, productoComprado, cantidadComprado, valorUnidad, valorTotal, referenciaProducto);
                 return true;
             }
         }else{

@@ -77,7 +77,13 @@ public interface ITienda {
                         Date fechaCompra,
                         double totalCompra,
                         String cedulaCliente,
-                        String cedulaEmpleado);
+                        String cedulaEmpleado,
+                        int numeroDetalle,
+                        String productoComprado,
+                        int cantidadComprado,
+                        double valorUnidad,
+                        double valorTotal,
+                        String referenciaProducto);
 
     Compra obtenerCompra(String codigoCompra);
     boolean actualizarCompra(String codigoCompraActual,
@@ -85,7 +91,13 @@ public interface ITienda {
                              Date fechaCompra,
                              double totalCompra,
                              String cedulaCliente,
-                             String cedulaEmpleado);
+                             String cedulaEmpleado,
+                             int numeroDetalle,
+                             String productoComprado,
+                             int cantidadComprado,
+                             double valorUnidad,
+                             double valorTotal,
+                             String referenciaProducto);
     void eliminarCompra(String codigoCompra);
 
     /* CRUD Detalle Compra */

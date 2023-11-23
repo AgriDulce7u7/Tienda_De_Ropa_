@@ -85,8 +85,8 @@ public class Compra {
                 '}';
     }
 
-    public void crearDetalleCompra(int numeroDetalle, String productoComprado, int cantidadComprado, double valorUnidad, double valorTotal, Producto ProductoAsosiado) {
-        Producto producto = ownedByTienda.obtenerProducto(ProductoAsosiado.getReferencia());
+    public void crearDetalleCompra(int numeroDetalle, String productoComprado, int cantidadComprado, double valorUnidad, double valorTotal, String referenciaProducto) {
+        Producto producto = ownedByTienda.obtenerProducto(referenciaProducto);
         if (producto != null && (producto.getCantidadDisponible() - cantidadComprado) > 0){
                 int cantidadActual = producto.getCantidadDisponible();
                 producto.setCantidadDisponible(cantidadActual-cantidadComprado);
@@ -96,7 +96,6 @@ public class Compra {
                 detalleCompra.setCantidadComprado(cantidadComprado);
                 detalleCompra.setValorUnidad(valorUnidad);
                 detalleCompra.setValorTotal(valorTotal);
-                detalleCompra.setProductoAsociado(productoAsociado);
                 detalleCompra.setProductoAsociado(producto);
         }
     }
