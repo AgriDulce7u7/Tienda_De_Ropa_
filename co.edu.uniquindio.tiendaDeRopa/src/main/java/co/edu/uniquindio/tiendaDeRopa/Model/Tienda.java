@@ -309,10 +309,11 @@ public class Tienda implements ITienda {
         if(productoEncontrado != null){
             System.out.println("El producto fue encontrado con éxito.");
             System.out.println(productoEncontrado.toString());
+            return true;
         }else{
             System.out.println("El producto no fue encontraddo.");
+            return false;
         }
-        return true;
     }
 
     public Producto buscarProductos(String referencia) {
