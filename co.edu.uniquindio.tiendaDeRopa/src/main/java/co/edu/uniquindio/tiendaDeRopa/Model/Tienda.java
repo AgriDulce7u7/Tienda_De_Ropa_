@@ -78,16 +78,17 @@ public class Tienda implements ITienda {
     /* Método para crear un cliente */
     @Override
     public boolean crearCliente(String nombreCompleto, String cedula, Sexo sexo, long telefono, int prendasCompradas, Date fechaUltimaCompra, MetodoPago metodoPago, String codigoCompra) {
-        Cliente cliente = new Cliente();
-        cliente.setNombreCompleto(nombreCompleto);
-        cliente.setCedula(cedula);
-        cliente.setSexo(sexo);
-        cliente.setTelefono(telefono);
-        cliente.setPrendasCompradas(prendasCompradas);
-        cliente.setFechaUltimaCompra(fechaUltimaCompra);
-        cliente.setMetodoPago(metodoPago);
-        getListaClientes().add(cliente);
-
+        if (cedula.equalsIgnoreCase(cedula)) {
+            Cliente cliente = new Cliente();
+            cliente.setNombreCompleto(nombreCompleto);
+            cliente.setCedula(cedula);
+            cliente.setSexo(sexo);
+            cliente.setTelefono(telefono);
+            cliente.setPrendasCompradas(prendasCompradas);
+            cliente.setFechaUltimaCompra(fechaUltimaCompra);
+            cliente.setMetodoPago(metodoPago);
+            getListaClientes().add(cliente);
+        }
         return true;
     }
 
@@ -149,16 +150,18 @@ public class Tienda implements ITienda {
 
     @Override
     public boolean crearEmpleado(String nombreCompleto, String cedula, Sexo sexo, long telefono, String correo, double salario, TipoContrato tipoContrato, int horasTrabajo, String codigoCompra) {
-        Empleado empleado = new Empleado();
-        empleado.setNombreCompleto(nombreCompleto);
-        empleado.setCedula(cedula);
-        empleado.setSexo(sexo);
-        empleado.setTelefono(telefono);
-        empleado.setCorreo(correo);
-        empleado.setSalario(salario);
-        empleado.setTipoContrato(tipoContrato);
-        empleado.setHorasTrabajo(horasTrabajo);
-        getListaEmpleados().add(empleado);
+        if (cedula.equalsIgnoreCase(cedula)) {
+            Empleado empleado = new Empleado();
+            empleado.setNombreCompleto(nombreCompleto);
+            empleado.setCedula(cedula);
+            empleado.setSexo(sexo);
+            empleado.setTelefono(telefono);
+            empleado.setCorreo(correo);
+            empleado.setSalario(salario);
+            empleado.setTipoContrato(tipoContrato);
+            empleado.setHorasTrabajo(horasTrabajo);
+            getListaEmpleados().add(empleado);
+        }
 
         return true;
     }
@@ -358,6 +361,14 @@ public class Tienda implements ITienda {
 
     public List<Cliente> obtenerClientes() {
         return getListaClientes();
+    }
+
+    public List<Empleado> obtenerEmpleados() {
+        return getListaEmpleados();
+    }
+
+    public List<Producto> obtenerProductos() {
+        return getListaProductos();
     }
 
     public void mostrarInformacionClientes(){

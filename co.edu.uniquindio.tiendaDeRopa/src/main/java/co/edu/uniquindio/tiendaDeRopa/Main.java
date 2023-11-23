@@ -17,27 +17,20 @@ public class Main {
         Tienda tienda = inicializarDatosPrueba();
         Cliente cliente = tienda.obtenerCliente("1004830265");
         Producto producto1 = tienda.mostrarProducto("agh789");
-        Date fechaUltimaCompra1 = new Date(23, 7, 6, 16, 0);
-        Date fechaUltimaCompra2 = new Date(22, 1, 9, 13, 0);
-        Date fechaUltimaCompra3 = new Date(20, 12, 24, 10, 0);
-        Date fechaCompra1 = new Date(23, 6, 21, 14, 0);
-        tienda.crearCompra("123f", fechaCompra1, 52000, "1004830265", "1520623205");
+        tienda.crearCompra("123f", new Date(23, 6, 21, 14, 0), 52000, "1004830265", "1520623205");
 
 
         /* Funciones CRUD Cliente */
         //Create
-        crearCliente("Ana Cruz Marin", "1004830265", Sexo.FEMENINO, 3024659, 11, fechaUltimaCompra1, MetodoPago.EFECTIVO, "41y", tienda);
-        crearCliente("Juan Mora Perez", "91850265", Sexo.MASCULINO, 3065651, 2, fechaUltimaCompra2, MetodoPago.TARJETA, "4k5", tienda);
-        crearCliente("Jose Luna Campos", "91850274", Sexo.MASCULINO, 3216549, 5, fechaUltimaCompra3, MetodoPago.TARJETA, "98m", tienda);
-
+        crearCliente("Ana Cruz Marin", "1004830265", Sexo.FEMENINO, 3024659, 11, new Date(23, 7, 6, 16, 0), MetodoPago.EFECTIVO, "41y", tienda);
+        crearCliente("Juan Mora Perez", "91850265", Sexo.MASCULINO, 3065651, 2, new Date(22, 1, 9, 13, 0), MetodoPago.TARJETA, "4k5", tienda);
+        crearCliente("Jose Luna Campos", "91850274", Sexo.MASCULINO, 3216549, 5, new Date(20, 12, 24, 10, 0), MetodoPago.TARJETA, "98m", tienda);
 
         //Read
         mostrarInformacionCliente(tienda);
-        tienda.obtenerCompra("");
-        System.out.println("Clientes creados  correctamente.");
 
         //Update
-        actualizarCliente("1", "Karen Escarraga", "1010660485", Sexo.FEMENINO, 305912565, 12, fechaUltimaCompra1, MetodoPago.EFECTIVO, "ter8", tienda);
+        actualizarCliente("1", "Karen Escarraga", "1010660485", Sexo.FEMENINO, 305912565, 12, new Date(22, 4, 3, 11, 00), MetodoPago.EFECTIVO, "ter8", tienda);
 
         //Delete
         eliminarCliente(tienda, "1004830265");
@@ -46,11 +39,49 @@ public class Main {
 
 
         /* CRUD Empleado */
-        crearEmpleado("Luis Ortiz Ruiz", "1094838275", Sexo.FEMENINO, 3123565, "argy78@", 1200000, TipoContrato.HORAS, 12, "156", tienda);
-        crearEmpleado("Isabel Chica Mora", "1010660485", Sexo.FEMENINO, 315454543, "hyu@d",5982, TipoContrato.MEDIO_TIEMPO, 15, "guyi89",tienda);
+        //Create
+        crearEmpleado("Luis Ortiz Ruiz", "1094838275", Sexo.FEMENINO, 312356558, "argy78@", 1200000, TipoContrato.HORAS, 22, "156e", tienda);
+        crearEmpleado("Isabel Chica Mora", "1010660485", Sexo.FEMENINO, 315454543, "hyu@d",1300000, TipoContrato.MEDIO_TIEMPO, 15, "guyi89",tienda);
+        crearEmpleado("Santiago Ramirez", "1520623205", Sexo.MASCULINO, 302156986, "santi@h78", 1450000, TipoContrato.HORAS, 32, "tre31", tienda);
+        //Read
+        mostrarInformacionEmpleado(tienda);
+        //Update
+        actualizarEmpleado("1520623205","Santiago Ramirez", "15206232012", Sexo.MASCULINO, 302156986, "santi@h78", 1450000, TipoContrato.HORAS, 32, "tre31", tienda);
+        //Delete
+        eliminarEmpleado(tienda, "1520623205");
+
+
         /* CRUD Producto */
+        //Create
+
+        //Read
+
+        //Update
+
+        //Delete
+
+
         /* CRUD Compra */
+        //Create
+
+        //Read
+        tienda.obtenerCompra("");
+        //Update
+
+        //Delete
+
+
+
         /* CRUD DetalleCompra*/
+        //Create
+
+        //Read
+
+        //Update
+
+        //Delete
+
+
 
         gestionarOpcionesAplicacionPrestamoUQ(tienda);
     }
@@ -433,19 +464,10 @@ public class Main {
         return tienda;
     }
 
-    private static void crearCompra(String codigoCompra, Date fechaCompra, double totalCompra, String cedulaCliente, String cedulaEmpleado,Tienda tienda) {
-        tienda.crearCompra(codigoCompra, fechaCompra, totalCompra, cedulaCliente, cedulaEmpleado);
-    }
-
     /* Método para crear clientes */
     private static void crearCliente(String nombreCompleto, String cedula, Sexo sexo, long telefono, int prendasCompradas, Date fechaUltimaCompra, MetodoPago metodoPago, String codigoCompra, Tienda tienda) {
         tienda.crearCliente(nombreCompleto, cedula, sexo, telefono, prendasCompradas, fechaUltimaCompra, metodoPago, codigoCompra);
     }
-
-    private static void crearEmpleado(String nombreCompleto, String cedula, Sexo sexo, long telefono, String correo, double salario, TipoContrato tipoContrato, int horasTrabajo, String codigoCompra, Tienda tienda){
-        tienda.crearEmpleado(nombreCompleto, cedula, sexo, telefono, correo, salario, tipoContrato, horasTrabajo, codigoCompra);
-    }
-
 
     /* Método para leer la lista de clientes */
     private static void mostrarInformacionCliente(Tienda tienda) {
@@ -463,7 +485,37 @@ public class Main {
     }
 
     /* Método para  eliminar un cliente */
-    private static void eliminarCliente(Tienda tienda, String numeroIdentificacion) {
-        tienda.eliminarCliente(numeroIdentificacion);
+    private static void eliminarCliente(Tienda tienda, String cedula) {
+        tienda.eliminarCliente(cedula);
+    }
+
+    /* Método para crear empleado */
+    private static void crearEmpleado(String nombreCompleto, String cedula, Sexo sexo, long telefono, String correo, double salario, TipoContrato tipoContrato, int horasTrabajo, String codigoCompra, Tienda tienda){
+        tienda.crearEmpleado(nombreCompleto, cedula, sexo, telefono, correo, salario, tipoContrato, horasTrabajo, codigoCompra);
+    }
+
+    /* Método para leer lista de empleados */
+    private static void mostrarInformacionEmpleado(Tienda tienda) {
+        List<Empleado> listaEmpleados = tienda.obtenerEmpleados();
+        int tamanioLista = listaEmpleados.size();
+        for(int i=0; i < tamanioLista; i++){
+            Empleado empleado = listaEmpleados.get(i);
+            System.out.println(empleado.toString());
+        }
+    }
+
+    /* Método para acualizar un empleado */
+    private static void actualizarEmpleado(String cedulaActual, String nombreCompleto, String cedula, Sexo sexo, long telefono, String correo, double salario, TipoContrato tipoContrato, int horasTrabajo, String codigoCompra, Tienda tienda){
+        tienda.actualizarEmpleado(cedulaActual, nombreCompleto, cedula, sexo, telefono, correo, salario, tipoContrato, horasTrabajo, codigoCompra);
+    }
+
+    /* Método para  eliminar un cliente */
+    private static void eliminarEmpleado(Tienda tienda, String cedula) {
+        tienda.eliminarEmpleado(cedula);
+    }
+
+    /* Método para crear compra */
+    private static void crearCompra(String codigoCompra, Date fechaCompra, double totalCompra, String cedulaCliente, String cedulaEmpleado,Tienda tienda) {
+        tienda.crearCompra(codigoCompra, fechaCompra, totalCompra, cedulaCliente, cedulaEmpleado);
     }
 }
